@@ -31,8 +31,8 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   title: {
+    fontFamily: 'Montserrat-SemiBold',
     fontSize: 24,
-    fontWeight: 'bold',
     color: '#002d40',
   },
 });
