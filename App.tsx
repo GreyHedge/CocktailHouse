@@ -3,9 +3,9 @@ import {
   SafeAreaView,
   StyleSheet,
   View,
-  Text,
   StatusBar,
 } from 'react-native';
+import {Typography, Colors} from './src/constants'
 
 const App: React.FC = () => {
   return (
@@ -13,7 +13,7 @@ const App: React.FC = () => {
       <StatusBar barStyle="dark-content" backgroundColor="#f4f6f0"/>
       <SafeAreaView style={styles.wrapper}>
         <View style={styles.mainView}>
-          <Text style={styles.title}>CocktailHouse</Text>
+          <Typography color='#002d40' h1>CocktailHouse</Typography>
         </View>
       </SafeAreaView>
     </>
@@ -23,7 +23,7 @@ const App: React.FC = () => {
 const styles = StyleSheet.create({
   wrapper: {
     flex: 1,
-    backgroundColor: '#f4f6f0',
+    backgroundColor: Colors.white,
   },
   mainView: {
     flex: 1,
@@ -33,7 +33,7 @@ const styles = StyleSheet.create({
   title: {
     fontFamily: 'Montserrat-SemiBold',
     fontSize: 24,
-    color: '#002d40',
+    color: Colors.dark,
   },
 });
 
