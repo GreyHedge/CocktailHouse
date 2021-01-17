@@ -3,6 +3,6 @@ export const Colors = {
   ice: '#d9ecf2',
   pink: '#f56a79',
   reddish: '#ff414d',
-  blue: '#1aa687',
+  blue: '#1aa6b7',
   dark: '#002d40',
 };

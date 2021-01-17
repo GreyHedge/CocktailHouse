@@ -1,5 +1,6 @@
 import {StyleSheet} from 'react-native';
 import {ITypographyProps} from './Typography'
+import {getPaddings, getMargins} from '../helpers'
 
 export const getTextStyleAndRestProps = (props: Omit<ITypographyProps, 'children'>) => {
   const {
@@ -28,11 +29,16 @@ export const getTextStyleAndRestProps = (props: Omit<ITypographyProps, 'children
     marginRight,
     marginHorizontal,
     marginVertical,
+    center,
+    right,
     style,
     ...restProps
   } = props;
   const textStyles = [
     styles.regular,
+    color ? {color} : null,
+    center ? styles.center : null,
+    right ? styles.right : null,
     title ? styles.title : null,
     h1 ? styles.h1 : null,
     h2 ? styles.h2 : null,
@@ -43,21 +49,24 @@ export const getTextStyleAndRestProps = (props: Omit<ITypographyProps, 'children
     caption ? styles.caption : null,
     semibold ? styles.semibold : null,
     bold ? styles.bold : null,
-    color ? {color} : null,
-    padding ? {padding} : null,
-    paddingTop ? {paddingTop} : null,
-    paddingBottom ? {paddingBottom} : null,
-    paddingLeft ? {paddingLeft} : null,
-    paddingRight ? {paddingRight} : null,
-    paddingVertical ? {paddingVertical} : null,
-    paddingHorizontal ? {paddingHorizontal} : null,
-    margin ? {margin} : null,
-    marginTop ? {marginTop} : null,
-    marginBottom ? {marginBottom} : null,
-    marginLeft ? {marginLeft} : null,
-    marginRight ? {marginRight} : null,
-    marginVertical ? {marginVertical} : null,
-    marginHorizontal ? {marginHorizontal} : null,
+    ...getPaddings({
+      padding,
+      paddingTop,
+      paddingBottom,
+      paddingLeft,
+      paddingRight,
+      paddingHorizontal,
+      paddingVertical,
+    }),
+    ...getMargins({
+      margin,
+      marginTop,
+      marginBottom,
+      marginLeft,
+      marginRight,
+      marginHorizontal,
+      marginVertical,
+    }),
     style,
   ];
 
