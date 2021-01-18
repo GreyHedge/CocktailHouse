@@ -53,7 +53,7 @@ export const Info: React.FC<IProps> = ({
           source={img}
           resizeMode="contain"
         />
-        <Box marginVertical={ESpacings.s16}>
+        <Box>
           <Tag name="Contain alcohol" value="Yes"/>
           <Tag name="Category" value="Ordinary Drink"/>
           <Tag name="Glass" value="Cocktail glass" isLast/>

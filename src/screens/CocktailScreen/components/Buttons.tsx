@@ -1,7 +1,7 @@
 import React from 'react';
 import {StyleSheet} from 'react-native';
 import Icon from 'react-native-vector-icons/AntDesign';
-import {Box} from '../../../components';
+import {Box, Button} from '../../../components';
 import {Colors, ESpacings} from '../../../constants';
 
 export const Buttons: React.FC = () => {
@@ -15,42 +15,48 @@ export const Buttons: React.FC = () => {
       borderTopLeftRadius={25}
       alignItems="center"
       style={styles.container}>
-      <Box
-        width={50}
-        height={50}
-        borderRadius={25}
-        alignItems="center"
-        justifyContent="center">
-        <Icon
-          name={"close"}
-          color={Colors.dark}
-          size={20}
-        />
-      </Box>
-      <Box
-        width={50}
-        height={50}
-        borderRadius={25}
-        alignItems="center"
-        justifyContent="center">
-        <Icon
-          name={"home"}
-          color={Colors.dark}
-          size={20}
-        />
-      </Box>
-      <Box
-        width={50}
-        height={50}
-        borderRadius={25}
-        alignItems="center"
-        justifyContent="center">
-        <Icon
-          name={"hearto"}
-          color={Colors.dark}
-          size={20}
-        />
-      </Box>
+      <Button radius={25} onPress={()=>{}}>
+        <Box
+          width={50}
+          height={50}
+          borderRadius={25}
+          alignItems="center"
+          justifyContent="center">
+          <Icon
+            name={"close"}
+            color={Colors.dark}
+            size={20}
+          />
+        </Box>
+      </Button>
+      <Button radius={25} onPress={()=>{}}>
+        <Box
+          width={50}
+          height={50}
+          borderRadius={25}
+          alignItems="center"
+          justifyContent="center">
+          <Icon
+            name={"home"}
+            color={Colors.dark}
+            size={20}
+          />
+        </Box>
+      </Button>
+      <Button radius={25} onPress={()=>{}}>
+        <Box
+          width={50}
+          height={50}
+          borderRadius={25}
+          alignItems="center"
+          justifyContent="center">
+          <Icon
+            name={"hearto"}
+            color={Colors.dark}
+            size={20}
+          />
+        </Box>
+      </Button>
     </Box>
   )
 };

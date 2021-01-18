@@ -2,7 +2,7 @@ import React from 'react';
 import {ScrollView} from 'react-native'
 import {Colors, ERounding, ESpacings} from '../../constants';
 import {Box, Typography} from '../../components';
-import {Ingredient, Instructions, Buttons, Info} from './components';
+import {Buttons, Info, Ingredient, Instructions} from './components';
 
 export const CocktailScreen: React.FC = () => {
   return (
@@ -19,6 +19,7 @@ export const CocktailScreen: React.FC = () => {
             width="80%"
             marginTop={-100}
             paddingTop={100}
+            paddingBottom={ESpacings.s24}
             borderTopLeftRadius={ERounding.r32}
             borderBottomLeftRadius={ERounding.r32}>
             <Typography
