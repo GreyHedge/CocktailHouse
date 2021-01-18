@@ -1,5 +1,6 @@
 import React from 'react';
 import {StyleSheet} from 'react-native';
+import Icon from 'react-native-vector-icons/AntDesign';
 import {Box, Typography} from '../../../components';
 import {Colors, ESpacings} from '../../../constants';
 
@@ -17,12 +18,17 @@ export const Tag: React.FC<IProps> = ({
   return (
     <Box
       row
-      alignItems="space-between"
+      alignItems="center"
       marginLeft={ESpacings.s8}
       paddingVertical={ESpacings.s8}
-      justifyContent="center"
+      paddingRight={ESpacings.s16}
       style={isLast ? null : styles.border}>
-      <Box flex={1}>
+      <Icon
+        name={"tago"}
+        color={Colors.dark}
+        size={20}
+      />
+      <Box flex={1} paddingHorizontal={ESpacings.s16}>
         <Typography
           h3
           color={Colors.dark}>
@@ -34,12 +40,11 @@ export const Tag: React.FC<IProps> = ({
           {value}
         </Typography>
       </Box>
-      <Typography
-        h3
-        margin={ESpacings.s8}
-        color={Colors.dark}>
-        &gt;
-      </Typography>
+      <Icon
+        name={"rightsquareo"}
+        color={Colors.dark}
+        size={20}
+      />
     </Box>
   )
 };

@@ -13,7 +13,7 @@ export const CocktailScreen: React.FC = () => {
           img={require('../../../assets/images/margarita.jpg')}
           iba="Contemporary Classic"
         />
-        <Box alignItems="flex-end" style={{elevation: 8, zIndex: 8}}>
+        <Box alignItems="flex-end" style={{elevation: 10, zIndex: 8, shadowOffset: {width: -2, height: 2}, shadowOpacity: 0.2, shadowRadius: 2}}>
           <Box
             backgroundColor={Colors.ice}
             width="80%"

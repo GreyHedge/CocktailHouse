@@ -1,6 +1,7 @@
 import React from 'react';
 import {StyleSheet} from 'react-native';
-import {Box, Typography} from '../../../components';
+import Icon from 'react-native-vector-icons/AntDesign';
+import {Box} from '../../../components';
 import {Colors, ESpacings} from '../../../constants';
 
 export const Buttons: React.FC = () => {
@@ -20,9 +21,11 @@ export const Buttons: React.FC = () => {
         borderRadius={25}
         alignItems="center"
         justifyContent="center">
-        <Typography h3>
-          X
-        </Typography>
+        <Icon
+          name={"close"}
+          color={Colors.dark}
+          size={20}
+        />
       </Box>
       <Box
         width={50}
@@ -30,9 +33,23 @@ export const Buttons: React.FC = () => {
         borderRadius={25}
         alignItems="center"
         justifyContent="center">
-        <Typography h3>
-          X
-        </Typography>
+        <Icon
+          name={"home"}
+          color={Colors.dark}
+          size={20}
+        />
+      </Box>
+      <Box
+        width={50}
+        height={50}
+        borderRadius={25}
+        alignItems="center"
+        justifyContent="center">
+        <Icon
+          name={"hearto"}
+          color={Colors.dark}
+          size={20}
+        />
       </Box>
     </Box>
   )
@@ -43,5 +60,12 @@ const styles = StyleSheet.create({
     position: 'absolute',
     top: 0,
     right: 0,
+    elevation: 10,
+    shadowOffset: {
+      width: -2,
+      height: 2,
+    },
+    shadowOpacity: 0.2,
+    shadowRadius: 2,
   }
 });

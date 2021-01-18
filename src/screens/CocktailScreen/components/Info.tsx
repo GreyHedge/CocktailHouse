@@ -24,6 +24,7 @@ export const Info: React.FC<IProps> = ({
       <Typography
         title
         color={Colors.dark}
+        paddingRight={60}
         marginVertical={ESpacings.s16}
         marginLeft={ESpacings.s16}>
         {name}
@@ -37,6 +38,7 @@ export const Info: React.FC<IProps> = ({
       <Typography
         body
         color={Colors.dark}
+        paddingRight={60}
         marginBottom={ESpacings.s16}
         marginLeft={ESpacings.s16}>
         {iba}
@@ -44,8 +46,7 @@ export const Info: React.FC<IProps> = ({
       <Box
         backgroundColor={Colors.reddish}
         width={250}
-        borderTopRightRadius={32}
-        borderBottomRightRadius={32}
+        marginLeft={50}
         style={styles.imgContainer}>
         <Image
           style={styles.cocktailImg}
@@ -68,6 +69,12 @@ const styles = StyleSheet.create({
     width: 250,
   },
   imgContainer: {
-    overflow: 'hidden',
+    elevation: 10,
+    shadowOffset: {
+      width: 2,
+      height: 2,
+    },
+    shadowOpacity: 0.2,
+    shadowRadius: 2,
   },
 });

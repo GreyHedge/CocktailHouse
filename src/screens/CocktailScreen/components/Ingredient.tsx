@@ -1,5 +1,6 @@
 import React from 'react';
 import {Image, ImageSourcePropType, StyleSheet} from 'react-native';
+import Icon from 'react-native-vector-icons/AntDesign';
 import {Typography} from '../../../components/Typography';
 import {Box} from '../../../components/Box';
 import {Colors, ESpacings} from '../../../constants';
@@ -41,11 +42,11 @@ export const Ingredient: React.FC<IIngredient> = ({
           </Typography>
         )}
       </Box>
-      <Typography
-        h3
-        color={Colors.dark}>
-        &gt;
-      </Typography>
+      <Icon
+        name={"rightsquareo"}
+        color={Colors.dark}
+        size={20}
+      />
     </Box>
   )
 };
