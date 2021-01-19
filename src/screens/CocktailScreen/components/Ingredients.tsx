@@ -1,8 +1,9 @@
 import React from 'react';
 import {StyleSheet} from 'react-native';
-import {Ingredient, IIngredient} from './Ingredient'
+import {Ingredient} from './Ingredient'
 import {Box, Typography} from '../../../components';
 import {Colors, ERounding, ESpacings} from '../../../constants';
+import {IIngredient} from '../../../data/types';
 
 interface IProps {
   ingredients: IIngredient[];
@@ -27,14 +28,15 @@ export const Ingredients: React.FC<IProps> = ({ingredients}) => {
           marginVertical={ESpacings.s16}>
           Ingredients
         </Typography>
-        {ingredients.map((ingredient) => {
-          const {name, img, dose} = ingredient;
+        {ingredients.map((ingredient, index) => {
+          const {name, value} = ingredient;
           return (
             <Ingredient
               key={name}
               name={name}
-              img={img}
-              dose={dose}
+              img={{uri: `https://www.thecocktaildb.com/images/ingredients/${name}-Small.png`}}
+              dose={value}
+              isLast={ingredients.length - 1 === index}
             />
           )
         })}
@@ -45,7 +47,13 @@ export const Ingredients: React.FC<IProps> = ({ingredients}) => {
 
 const styles = StyleSheet.create({
   container: {
-    elevation: 8,
+    elevation: 10,
     zIndex: 8,
+    shadowOffset: {
+      width: -2,
+      height: 2,
+    },
+    shadowOpacity: 0.2,
+    shadowRadius: 2,
   },
 });

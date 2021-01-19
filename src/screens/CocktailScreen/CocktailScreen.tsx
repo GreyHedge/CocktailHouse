@@ -1,43 +1,58 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import {ScrollView} from 'react-native'
-import {Colors, ERounding, ESpacings} from '../../constants';
-import {Box, Typography} from '../../components';
-import {Buttons, Info, Ingredient, Instructions} from './components';
+import axios from 'axios';
+import {Box} from '../../components';
+import {Buttons, Info, Ingredients, Instructions} from './components';
+import {mapCocktail} from '../../data/helpers';
+import {ICocktail} from '../../data/types';
+import {Colors} from '../../constants';
 
 export const CocktailScreen: React.FC = () => {
+  const [cocktail, setCocktail] = useState<ICocktail | null>(null);
+  console.log('cocktail', cocktail?.id);
+
+  useEffect(() => {
+    async function getCocktail(id: number) {
+      try {
+        const response = await axios.get(`https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${id}`);
+        setCocktail(mapCocktail(response.data.drinks[0]));
+      } catch (error) {
+        console.error(error);
+      }
+    }
+    getCocktail(11007)
+  }, []);
+
+  if (!cocktail) {
+    return null;
+  }
+
+  const {
+    name,
+    category,
+    iba,
+    glass,
+    instructions,
+    img,
+    isAlcohol,
+    ingredients,
+  } = cocktail;
+
   return (
     <Box backgroundColor={Colors.pink} flex={1}>
       <ScrollView showsVerticalScrollIndicator={false}>
         <Info
-          name="Margarita"
-          img={require('../../../assets/images/margarita.jpg')}
-          iba="Contemporary Classic"
+          name={name}
+          img={{uri: img}}
+          iba={iba}
+          category={category}
+          isAlcohol={isAlcohol}
+          glass={glass}
         />
-        <Box alignItems="flex-end" style={{elevation: 10, zIndex: 8, shadowOffset: {width: -2, height: 2}, shadowOpacity: 0.2, shadowRadius: 2}}>
-          <Box
-            backgroundColor={Colors.ice}
-            width="80%"
-            marginTop={-100}
-            paddingTop={100}
-            paddingBottom={ESpacings.s24}
-            borderTopLeftRadius={ERounding.r32}
-            borderBottomLeftRadius={ERounding.r32}>
-            <Typography
-              h2
-              center
-              color={Colors.dark}
-              marginVertical={ESpacings.s16}>
-              Ingredients
-            </Typography>
-            <Ingredient name="Tequila" img={require('../../../assets/images/ingredient1.png')} dose="1 1/2 oz" />
-            <Ingredient name="Triple sec" img={require('../../../assets/images/ingredient2.png')} dose="1/2 oz" />
-            <Ingredient name="Lime juice" img={require('../../../assets/images/ingredient3.png')} dose="1 oz" />
-            <Ingredient name="Salt" img={require('../../../assets/images/ingredient4.png')} isLast/>
-          </Box>
-        </Box>
+        <Ingredients ingredients={ingredients} />
         <Instructions
-          instructions="Rub the rim of the glass with the lime slice to make the salt stick to it. Take care to moisten only the outer rim and sprinkle the salt on it. The salt should present to the lips of the imbiber and never mix into the cocktail. Shake the other ingredients with ice, then carefully pour into the glass."
-          glass="Cocktail glass"
+          instructions={instructions}
+          glass={glass}
         />
       </ScrollView>
       <Buttons />

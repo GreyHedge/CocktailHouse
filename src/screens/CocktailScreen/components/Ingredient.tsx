@@ -7,7 +7,7 @@ import {Colors, ESpacings} from '../../../constants';
 export interface IIngredient {
   name: string;
   img: ImageSourcePropType;
-  dose?: string;
+  dose: string | null;
   isLast?: boolean
 }
 

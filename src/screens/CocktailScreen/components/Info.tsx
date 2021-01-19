@@ -10,6 +10,7 @@ interface IProps {
   isAlcohol: boolean;
   img: ImageSourcePropType;
   category: string;
+  glass: string;
 }
 
 export const Info: React.FC<IProps> = ({
@@ -18,6 +19,7 @@ export const Info: React.FC<IProps> = ({
   isAlcohol,
   img,
   category,
+  glass,
 }) => {
   return (
     <Box style={{elevation: 10, zIndex: 10}}>
@@ -54,9 +56,9 @@ export const Info: React.FC<IProps> = ({
           resizeMode="contain"
         />
         <Box>
-          <Tag name="Contain alcohol" value="Yes"/>
-          <Tag name="Category" value="Ordinary Drink"/>
-          <Tag name="Glass" value="Cocktail glass" isLast/>
+          <Tag name="Contain alcohol" value={isAlcohol ? "Yes" : "No"} />
+          <Tag name="Category" value={category} />
+          <Tag name="Glass" value={glass} isLast/>
         </Box>
       </Box>
     </Box>
