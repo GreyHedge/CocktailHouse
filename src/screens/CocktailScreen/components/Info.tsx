@@ -1,7 +1,7 @@
 import React from 'react';
 import {Image, ImageSourcePropType, StyleSheet} from 'react-native';
 import {Box, Typography} from '../../../components';
-import {Tag} from './Tag';
+import {TagList} from './TagList';
 import {Colors, ESpacings} from '../../../constants';
 
 interface IProps {
@@ -22,7 +22,7 @@ export const Info: React.FC<IProps> = ({
   glass,
 }) => {
   return (
-    <Box style={{elevation: 10, zIndex: 10}}>
+    <Box style={styles.container}>
       <Typography
         title
         color={Colors.dark}
@@ -55,17 +55,21 @@ export const Info: React.FC<IProps> = ({
           source={img}
           resizeMode="contain"
         />
-        <Box>
-          <Tag name="Contain alcohol" value={isAlcohol ? "Yes" : "No"} />
-          <Tag name="Category" value={category} />
-          <Tag name="Glass" value={glass} isLast/>
-        </Box>
+        <TagList
+          isAlcohol={isAlcohol}
+          category={category}
+          glass={glass}
+        />
       </Box>
     </Box>
   )
 };
 
 const styles = StyleSheet.create({
+  container: {
+    elevation: 10,
+    zIndex: 10,
+  },
   cocktailImg: {
     height: 250,
     width: 250,

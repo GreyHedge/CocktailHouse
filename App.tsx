@@ -5,7 +5,7 @@ import {
   StatusBar,
 } from 'react-native';
 import {Colors} from './src/constants'
-import {CocktailScreen} from './src/screens/CocktailScreen';
+import {CocktailScreen} from './src/screens';
 
 const App: React.FC = () => {
   return (

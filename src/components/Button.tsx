@@ -1,5 +1,5 @@
 import React, {ReactNode} from 'react';
-import {Pressable, StyleSheet} from 'react-native';
+import {Pressable, StyleSheet, Platform} from 'react-native';
 import {Colors} from '../constants';
 
 interface IProps {
@@ -18,7 +18,7 @@ export const Button: React.FC<IProps> = ({
   return (
     <Pressable
       android_ripple={{color: rippleColor, radius: radius ?? undefined}}
-      style={buttonStyle}
+      style={Platform.OS === 'ios' ? buttonStyle : null}
       onPress={onPress}>
       {children}
     </Pressable>

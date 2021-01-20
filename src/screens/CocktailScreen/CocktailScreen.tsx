@@ -2,14 +2,13 @@ import React, {useEffect, useState} from 'react';
 import {ScrollView} from 'react-native'
 import axios from 'axios';
 import {Box} from '../../components';
-import {Buttons, Info, Ingredients, Instructions} from './components';
+import {Menu, Info, Ingredients, Instructions} from './components';
 import {mapCocktail} from '../../data/helpers';
 import {ICocktail} from '../../data/types';
 import {Colors} from '../../constants';
 
 export const CocktailScreen: React.FC = () => {
   const [cocktail, setCocktail] = useState<ICocktail | null>(null);
-  console.log('cocktail', cocktail?.id);
 
   useEffect(() => {
     async function getCocktail(id: number) {
@@ -20,7 +19,7 @@ export const CocktailScreen: React.FC = () => {
         console.error(error);
       }
     }
-    getCocktail(11007)
+    getCocktail(11007);
   }, []);
 
   if (!cocktail) {
@@ -55,7 +54,7 @@ export const CocktailScreen: React.FC = () => {
           glass={glass}
         />
       </ScrollView>
-      <Buttons />
+      <Menu />
     </Box>
   )
 };
