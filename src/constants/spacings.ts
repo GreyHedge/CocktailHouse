@@ -19,8 +19,8 @@ export enum ERounding {
   r12 = 12,
   r16 = 16,
   r20 = 20,
-  r32 = 24,
-  r100 = 32,
+  r24 = 24,
+  r32 = 32,
 }
 
 export enum EShadow {

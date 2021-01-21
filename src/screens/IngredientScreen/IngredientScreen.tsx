@@ -1,11 +1,10 @@
 import React, {useEffect, useState} from 'react';
 import {ScrollView} from 'react-native';
 import axios from 'axios';
-import {Box} from '../../components';
+import {Box} from '@components';
 import {NameAndTags, Menu, Description} from './components';
-import {mapIngredient} from '../../data/helpers';
-import {IIngredientDetail} from '../../data/types';
-import {Colors} from '../../constants';
+import {mapIngredient, IIngredientDetail} from '@data';
+import {Colors} from '@constants';
 
 export const IngredientScreen: React.FC = () => {
   const [ingredient, setIngredient] = useState<IIngredientDetail | null>(null);

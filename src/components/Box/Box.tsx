@@ -2,7 +2,7 @@ import React, {ReactNode} from 'react';
 import {View, ViewStyle, ViewProps} from 'react-native';
 import {IPaddings, IMargins} from '../helpers';
 import {getStyleAndRestProps} from './styleHelpers';
-import {ERounding} from "../../constants";
+import {ERounding} from '@constants';
 
 export interface IBoxProps extends ViewProps, IPaddings, IMargins {
   children?: ReactNode | ReactNode[] | null;

@@ -1,8 +1,8 @@
 import React from 'react';
 import {Image, ImageSourcePropType, StyleSheet} from 'react-native';
 import Icon from 'react-native-vector-icons/AntDesign';
-import {Typography, Box, Button} from '../../../components';
-import {Colors, ESpacings} from '../../../constants';
+import {Typography, Box, Button} from '@components';
+import {Colors, ESpacings} from '@constants';
 
 export interface IIngredient {
   name: string;

@@ -1,8 +1,8 @@
 import React from 'react';
 import {Image, ImageSourcePropType, StyleSheet} from 'react-native';
-import {Box, Typography} from '../../../components';
+import {Box, Typography} from '@components';
 import {TagList} from './TagList';
-import {Colors, ESpacings} from '../../../constants';
+import {Colors, ESpacings, cocktailDetailInfoBlockWidth} from '@constants';
 
 interface IProps {
   name: string;
@@ -47,7 +47,7 @@ export const Info: React.FC<IProps> = ({
       </Typography>
       <Box
         backgroundColor={Colors.reddish}
-        width={250}
+        width={cocktailDetailInfoBlockWidth}
         marginLeft={50}
         style={styles.imgContainer}>
         <Image
@@ -71,8 +71,8 @@ const styles = StyleSheet.create({
     zIndex: 10,
   },
   cocktailImg: {
-    height: 250,
-    width: 250,
+    height: cocktailDetailInfoBlockWidth,
+    width: cocktailDetailInfoBlockWidth,
   },
   imgContainer: {
     elevation: 10,

@@ -1,6 +1,6 @@
 import React, {ReactNode} from 'react';
 import {Pressable, StyleSheet, Platform} from 'react-native';
-import {Colors} from '../constants';
+import {Colors} from '@constants';
 
 interface IProps {
   children: ReactNode;

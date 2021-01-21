@@ -1,11 +1,10 @@
 import React, {useEffect, useState} from 'react';
 import {ScrollView} from 'react-native'
 import axios from 'axios';
-import {Box} from '../../components';
+import {Box} from '@components';
 import {Menu, Info, Ingredients, Instructions} from './components';
-import {mapCocktail} from '../../data/helpers';
-import {ICocktail} from '../../data/types';
-import {Colors} from '../../constants';
+import {mapCocktail, ICocktail} from '@data';
+import {Colors} from '@constants';
 
 export const CocktailScreen: React.FC = () => {
   const [cocktail, setCocktail] = useState<ICocktail | null>(null);

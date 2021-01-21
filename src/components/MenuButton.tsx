@@ -1,8 +1,8 @@
 import React from 'react';
 import Icon from 'react-native-vector-icons/AntDesign';
 import {Button} from './Button';
-import {Box} from "./Box";
-import {Colors} from '../constants';
+import {Box} from './Box';
+import {Colors, ESpacings} from '@constants';
 
 interface IProps {
   onPress: () => void;
@@ -18,7 +18,7 @@ export const MenuButton: React.FC<IProps> =({
   iconColor = Colors.dark,
 }) => {
   return (
-    <Button radius={25} onPress={onPress}>
+    <Button radius={size / 2} onPress={onPress}>
       <Box
         width={size}
         height={size}
@@ -28,7 +28,7 @@ export const MenuButton: React.FC<IProps> =({
         <Icon
           name={icon}
           color={iconColor}
-          size={size / 2 - 5}
+          size={size / 2 - ESpacings.s4}
         />
       </Box>
     </Button>

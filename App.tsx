@@ -4,8 +4,8 @@ import {
   StyleSheet,
   StatusBar,
 } from 'react-native';
-import {Colors} from './src/constants'
-import {CocktailScreen} from './src/screens';
+import {Colors} from '@constants'
+import {CocktailScreen} from '@screens';
 
 const App: React.FC = () => {
   return (

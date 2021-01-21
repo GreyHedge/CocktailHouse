@@ -1,4 +1,4 @@
-import {ESpacings} from '../../constants';
+import {ESpacings} from '@constants';
 
 export interface IMargins {
   margin?: ESpacings | number;

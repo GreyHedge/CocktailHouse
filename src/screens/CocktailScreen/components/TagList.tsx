@@ -1,6 +1,6 @@
 import React from 'react';
 import {Tag} from './Tag';
-import {Box} from '../../../components';
+import {Box} from '@components';
 
 interface IProps {
   isAlcohol: boolean;

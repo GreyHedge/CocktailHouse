@@ -1,8 +1,8 @@
 import React from 'react';
 import {StyleSheet} from 'react-native';
 import Icon from 'react-native-vector-icons/AntDesign';
-import {Box, Typography, Button} from '../../../components';
-import {Colors, ESpacings} from '../../../constants';
+import {Box, Typography, Button} from '@components';
+import {Colors, ESpacings} from '@constants';
 
 interface IProps {
   name: string;

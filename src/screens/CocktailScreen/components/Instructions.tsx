@@ -1,7 +1,7 @@
 import React from 'react';
 import {StyleSheet} from 'react-native';
-import {Box, Typography} from '../../../components';
-import {Colors, ERounding, ESpacings} from '../../../constants';
+import {Box, Typography} from '@components';
+import {Colors, ERounding, ESpacings} from '@constants';
 
 interface IProps {
   instructions: string;
@@ -19,7 +19,7 @@ export const Instructions: React.FC<IProps> = ({instructions, glass}) => {
       marginBottom={ESpacings.s16}
       paddingHorizontal={ESpacings.s16}
       style={styles.shadow}
-      borderBottomRightRadius={ERounding.r32}>
+      borderBottomRightRadius={ERounding.r24}>
       <Typography
         h2
         center

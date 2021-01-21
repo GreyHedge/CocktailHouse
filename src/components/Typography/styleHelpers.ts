@@ -1,6 +1,6 @@
 import {StyleSheet} from 'react-native';
-import {ITypographyProps} from './Typography'
-import {getPaddings, getMargins} from '../helpers'
+import {ITypographyProps} from './Typography';
+import {getPaddings, getMargins} from '../helpers';
 
 export const getTextStyleAndRestProps = (props: Omit<ITypographyProps, 'children'>) => {
   const {

@@ -1,8 +1,8 @@
 import React from 'react';
 import {Image, StyleSheet} from 'react-native';
-import {Box, Typography} from '../../../components';
-import {Colors, ERounding, ESpacings, ingredientImgWidth} from '../../../constants';
-import {width} from '../../../helpers';
+import {Box, Typography} from '@components';
+import {Colors, ERounding, ESpacings, ingredientImgWidth} from '@constants';
+import {width} from '@helpers';
 
 interface IProps {
   name: string;
@@ -25,8 +25,8 @@ export const Description: React.FC<IProps> = ({
       paddingBottom={ESpacings.s32}
       marginTop={52}
       marginBottom={ESpacings.s16}
-      borderTopLeftRadius={ERounding.r32}
-      borderBottomLeftRadius={ERounding.r32}>
+      borderTopLeftRadius={ERounding.r24}
+      borderBottomLeftRadius={ERounding.r24}>
       <Image
         source={{uri: `https://www.thecocktaildb.com/images/ingredients/${name}-Medium.png`}}
         style={styles.img}
