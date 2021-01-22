@@ -1,29 +1,30 @@
-export interface ICocktail {
-  id: string;
-  name: string;
+export interface ICocktailDetail extends ICocktail {
   category: string;
   iba: string;
   glass: string;
   instructions: string;
-  img: string;
   isAlcohol: boolean;
   ingredients: IIngredient[];
+}
+
+export interface ICocktail {
+  id: string;
+  name: string;
+  img: string;
 }
 
 export interface IIngredient {
   name: string;
   value: string | null;
+  img: string;
 }
 
-export interface ICocktailResponse {
-  idDrink: string;
-  strDrink: string;
+export interface ICocktailDetailResponse extends ICocktailResponse{
   strCategory: string;
   strIBA: string;
   strAlcoholic: string;
   strGlass: string;
   strInstructions: string;
-  strDrinkThumb: string;
   strIngredient1: string | null;
   strIngredient2: string | null;
   strIngredient3: string | null;
@@ -54,4 +55,10 @@ export interface ICocktailResponse {
   strMeasure13: string | null;
   strMeasure14: string | null;
   strMeasure15: string | null;
+}
+
+export interface ICocktailResponse {
+  idDrink: string;
+  strDrink: string;
+  strDrinkThumb: string;
 }

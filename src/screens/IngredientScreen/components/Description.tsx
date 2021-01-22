@@ -1,7 +1,7 @@
 import React from 'react';
 import {Image, StyleSheet} from 'react-native';
 import {Box, Typography} from '@components';
-import {Colors, ERounding, ESpacings, ingredientImgWidth} from '@constants';
+import {Colors, ERounding, ESpacings, ingredientImgSize} from '@constants';
 import {width} from '@helpers';
 
 interface IProps {
@@ -20,7 +20,7 @@ export const Description: React.FC<IProps> = ({
     <Box
       backgroundColor={Colors.dark}
       width={width * 0.8}
-      paddingTop={ingredientImgWidth / 2}
+      paddingTop={ingredientImgSize / 2}
       paddingHorizontal={ESpacings.s16}
       paddingBottom={ESpacings.s32}
       marginTop={52}
@@ -62,10 +62,10 @@ const styles = StyleSheet.create({
     shadowRadius: 2,
   },
   img: {
-    width: ingredientImgWidth,
-    height: ingredientImgWidth,
+    width: ingredientImgSize,
+    height: ingredientImgSize,
     position: 'absolute',
-    top: - ingredientImgWidth / 2,
+    top: - ingredientImgSize / 2,
     left: 0,
   }
 });

@@ -1,15 +1,18 @@
-import {ICocktail, ICocktailResponse} from '../types';
+import {
+  ICocktail,
+  ICocktailResponse,
+  ICocktailDetail,
+  ICocktailDetailResponse,
+} from '../types';
 
-export const mapCocktail = (resp: ICocktailResponse): ICocktail => {
+export const mapCocktailDetails = (resp: ICocktailDetailResponse): ICocktailDetail => {
   const {
-    idDrink: id,
-    strDrink: name,
     strCategory: category,
     strIBA: iba,
     strGlass: glass,
     strInstructions: instructions,
-    strDrinkThumb: img,
     strAlcoholic,
+    ...rest
   } = resp;
   const ingredients = [];
   for (let i = 1; i <16 ; i++) {
@@ -23,14 +26,29 @@ export const mapCocktail = (resp: ICocktailResponse): ICocktail => {
   }
 
   return {
-    id,
-    name,
-    category,
     iba,
     glass,
     ingredients,
     instructions,
-    img,
     isAlcohol: strAlcoholic === 'Alcoholic',
+    ...mapCocktail(rest),
   };
+};
+
+export const mapCocktail = (resp: ICocktailResponse): ICocktail => {
+  const {
+    idDrink: id,
+    strDrink: name,
+    strDrinkThumb: img,
+  } = resp;
+
+  return {
+    id,
+    name,
+    img,
+  }
+};
+
+export const mapCocktailList = (resp: ICocktailResponse[]): ICocktail[] => {
+  return resp.map((item ) => mapCocktail(item));
 };

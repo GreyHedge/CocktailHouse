@@ -2,7 +2,7 @@ import React from 'react';
 import {Image, ImageSourcePropType, StyleSheet} from 'react-native';
 import {Box, Typography} from '@components';
 import {TagList} from './TagList';
-import {Colors, ESpacings, cocktailDetailInfoBlockWidth} from '@constants';
+import {Colors, ESpacings, cocktailDetailInfoBlockWidth, buttonsMenuWidth} from '@constants';
 
 interface IProps {
   name: string;
@@ -26,7 +26,7 @@ export const Info: React.FC<IProps> = ({
       <Typography
         title
         color={Colors.dark}
-        paddingRight={60}
+        marginRight={buttonsMenuWidth + ESpacings.s16}
         marginVertical={ESpacings.s16}
         marginLeft={ESpacings.s16}>
         {name}

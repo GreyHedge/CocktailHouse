@@ -3,17 +3,17 @@ import {ScrollView} from 'react-native'
 import axios from 'axios';
 import {Box} from '@components';
 import {Menu, Info, Ingredients, Instructions} from './components';
-import {mapCocktail, ICocktail} from '@data';
+import {mapCocktailDetails, ICocktailDetail} from '@data';
 import {Colors} from '@constants';
 
 export const CocktailScreen: React.FC = () => {
-  const [cocktail, setCocktail] = useState<ICocktail | null>(null);
+  const [cocktail, setCocktail] = useState<ICocktailDetail | null>(null);
 
   useEffect(() => {
     async function getCocktail(id: number) {
       try {
         const response = await axios.get(`https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${id}`);
-        setCocktail(mapCocktail(response.data.drinks[0]));
+        setCocktail(mapCocktailDetails(response.data.drinks[0]));
       } catch (error) {
         console.error(error);
       }

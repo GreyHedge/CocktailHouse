@@ -1,8 +1,8 @@
 import React, {useEffect, useState} from 'react';
 import {ScrollView} from 'react-native';
 import axios from 'axios';
-import {Box} from '@components';
-import {NameAndTags, Menu, Description} from './components';
+import {Box, SmallMenu} from '@components';
+import {NameAndTags, Description} from './components';
 import {mapIngredient, IIngredientDetail} from '@data';
 import {Colors} from '@constants';
 
@@ -49,7 +49,7 @@ export const IngredientScreen: React.FC = () => {
           description={description}
         />
       </ScrollView>
-      <Menu />
+      <SmallMenu onPress={() => {}} />
     </Box>
   )
 };
