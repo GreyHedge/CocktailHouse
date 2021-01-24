@@ -27,6 +27,7 @@ export const mapCocktailDetails = (resp: ICocktailDetailResponse): ICocktailDeta
 
   return {
     iba,
+    category,
     glass,
     ingredients,
     instructions,

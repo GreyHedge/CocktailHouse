@@ -4,3 +4,4 @@ export * from './Button';
 export * from './ButtonsMenuBlock';
 export * from './MenuButton';
 export * from './SmallMenu';
+export * from './CocktailCard';

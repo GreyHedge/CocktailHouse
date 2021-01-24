@@ -6,16 +6,23 @@ import {ICocktail} from '@data';
 
 interface IProps {
   cocktail: ICocktail;
+  marginBottom?: ESpacings | number;
+  marginRight?: ESpacings | number;
 }
 
-export const CocktailCard: React.FC<IProps> = ({cocktail}) => {
+export const CocktailCard: React.FC<IProps> = ({
+  cocktail,
+  marginBottom = ESpacings.s0,
+  marginRight = ESpacings.s0,
+}) => {
   const {name, img} = cocktail;
 
   return (
     <Box
       width={cocktailCardImageSize + buttonsMenuWidth}
       borderRadius={ERounding.r24}
-      marginBottom={ESpacings.s16 + 50}
+      marginRight={marginRight}
+      marginBottom={marginBottom}
       backgroundColor={Colors.pink}
       style={styles.container}>
       <Button

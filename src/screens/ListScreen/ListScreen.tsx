@@ -1,14 +1,16 @@
 import React, {useEffect, useState} from 'react';
 import {FlatList, ListRenderItemInfo, StyleSheet} from 'react-native';
 import axios from 'axios';
-import {Box, SmallMenu, Typography} from '@components';
-import {CocktailCard} from './components';
+import {Box, CocktailCard, SmallMenu, Typography} from '@components';
 import {ICocktail, mapCocktailList} from '@data';
 import {buttonsMenuWidth, Colors, ESpacings} from '@constants';
 
 const handleRenderItem = (info: ListRenderItemInfo<ICocktail>) => {
   return (
-    <CocktailCard cocktail={info.item} />
+    <CocktailCard
+      cocktail={info.item}
+      marginBottom={ESpacings.s16}
+    />
   )
 };
 
