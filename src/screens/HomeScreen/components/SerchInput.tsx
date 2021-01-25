@@ -1,6 +1,6 @@
 import React from 'react';
 import {StyleSheet, TextInput} from 'react-native';
-import {Box, MenuButton} from '@components';
+import {Box, RoundButton} from '@components';
 import {Colors, ERounding, ESpacings} from '@constants';
 
 interface IProps {
@@ -27,7 +27,7 @@ export const SearchInput: React.FC<IProps> = ({
         style={styles.input}
         onSubmitEditing={onSubmit}
       />
-      <MenuButton onPress={onSubmit} icon="search1" />
+      <RoundButton onPress={onSubmit} icon="search1" />
     </Box>
   )
 };

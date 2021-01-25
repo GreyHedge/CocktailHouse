@@ -1,19 +1,19 @@
 import React from 'react';
-import {ButtonsMenuBlock, MenuButton} from '@components';
+import {ButtonsMenuBlock, RoundButton} from '@components';
 
 export const Menu: React.FC = () => {
   return (
     <ButtonsMenuBlock>
-      <MenuButton
-        onPress={()=>{}}
+      <RoundButton
+        onPress={()=>{console.log('close pressed')}}
         icon={"close"}
       />
-      <MenuButton
-        onPress={()=>{}}
+      <RoundButton
+        onPress={()=>{console.log('home pressed')}}
         icon={"home"}
       />
-      <MenuButton
-        onPress={()=>{}}
+      <RoundButton
+        onPress={()=>{console.log('like pressed')}}
         icon={"hearto"}
       />
     </ButtonsMenuBlock>

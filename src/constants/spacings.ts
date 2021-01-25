@@ -29,3 +29,9 @@ export enum EShadow {
   L = 6,
   XL = 10,
 }
+
+export enum ImageSize {
+  S = 100,
+  M = 200,
+  L = 250,
+}

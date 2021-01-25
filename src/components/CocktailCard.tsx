@@ -1,7 +1,7 @@
 import React from 'react';
 import {Image, StyleSheet} from 'react-native';
-import {Box, Button, MenuButton, Typography} from '@components';
-import {buttonsMenuWidth, cocktailCardImageSize, Colors, ERounding, ESpacings} from '@constants';
+import {Box, Button, RoundButton, Typography} from '@components';
+import {roundButtonsWidth, Colors, ERounding, ESpacings, ImageSize} from '@constants';
 import {ICocktail} from '@data';
 
 interface IProps {
@@ -19,7 +19,7 @@ export const CocktailCard: React.FC<IProps> = ({
 
   return (
     <Box
-      width={cocktailCardImageSize + buttonsMenuWidth}
+      width={ImageSize.M + roundButtonsWidth}
       borderRadius={ERounding.r24}
       marginRight={marginRight}
       marginBottom={marginBottom}
@@ -27,7 +27,8 @@ export const CocktailCard: React.FC<IProps> = ({
       style={styles.container}>
       <Button
         rippleColor={Colors.reddish}
-        onPress={() => {console.log(name)}}>
+        onPress={() => {console.log(name)}}
+        style={styles.button}>
         <Box
           row
           justifyContent="space-between"
@@ -37,7 +38,7 @@ export const CocktailCard: React.FC<IProps> = ({
             style={styles.img}
             resizeMode="contain"
           />
-          <MenuButton
+          <RoundButton
             icon="hearto"
             onPress={() => {console.log('heart1')}}
           />
@@ -45,7 +46,7 @@ export const CocktailCard: React.FC<IProps> = ({
         <Typography
           h2
           color={Colors.dark}
-          paddingRight={buttonsMenuWidth}
+          paddingRight={roundButtonsWidth}
           marginVertical={ESpacings.s16}
           marginLeft={ESpacings.s16}>
           {name}
@@ -59,9 +60,12 @@ const styles = StyleSheet.create({
   container: {
     overflow: 'hidden',
   },
+  button: {
+    flex: 1,
+  },
   img: {
-    width: cocktailCardImageSize,
-    height: cocktailCardImageSize,
+    width: ImageSize.M,
+    height: ImageSize.M,
     borderTopLeftRadius: ERounding.r24,
   }
 });

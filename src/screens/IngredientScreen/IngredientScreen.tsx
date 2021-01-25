@@ -3,7 +3,7 @@ import {ScrollView} from 'react-native';
 import axios from 'axios';
 import {Box, SmallMenu} from '@components';
 import {NameAndTags, Description} from './components';
-import {mapIngredient, IIngredientDetail} from '@data';
+import {mapIngredientDetail, IIngredientDetail} from '@data';
 import {Colors} from '@constants';
 
 export const IngredientScreen: React.FC = () => {
@@ -13,7 +13,7 @@ export const IngredientScreen: React.FC = () => {
     async function getCocktail(name: string) {
       try {
         const response = await axios.get(`https://www.thecocktaildb.com/api/json/v1/1/search.php?i=${name}`);
-        setIngredient(mapIngredient(response.data.ingredients[0]));
+        setIngredient(mapIngredientDetail(response.data.ingredients[0]));
       } catch (error) {
         console.error(error);
       }
@@ -49,7 +49,7 @@ export const IngredientScreen: React.FC = () => {
           description={description}
         />
       </ScrollView>
-      <SmallMenu onPress={() => {}} />
+      <SmallMenu onPress={() => {console.log('close pressed')}} />
     </Box>
   )
 };

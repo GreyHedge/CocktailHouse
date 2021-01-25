@@ -1,5 +1,5 @@
 import React, {ReactNode} from 'react';
-import {Pressable, StyleSheet, Platform} from 'react-native';
+import {Pressable, StyleSheet, Platform, ViewStyle} from 'react-native';
 import {Colors} from '@constants';
 
 interface IProps {
@@ -7,6 +7,7 @@ interface IProps {
   rippleColor?: string;
   radius?: number
   onPress: () => void;
+  style?: ViewStyle | ViewStyle[];
 }
 
 export const Button: React.FC<IProps> = ({
@@ -14,11 +15,12 @@ export const Button: React.FC<IProps> = ({
   onPress,
   rippleColor = Colors.dark,
   radius,
+  style = {},
 }) => {
   return (
     <Pressable
       android_ripple={{color: rippleColor, radius: radius ?? undefined}}
-      style={Platform.OS === 'ios' ? buttonStyle : null}
+      style={Platform.OS === 'ios' ? buttonStyle(style) : style}
       onPress={onPress}>
       {children}
     </Pressable>
@@ -34,4 +36,6 @@ const styles = StyleSheet.create({
   },
 });
 
-const buttonStyle = ({pressed} : {pressed:  boolean}) => pressed ? styles.pressedButton : styles.button;
+const buttonStyle = (style: ViewStyle | ViewStyle[] | null) => ({pressed} : {pressed:  boolean}) => pressed
+  ? [styles.pressedButton, style]
+  : [styles.button, style];

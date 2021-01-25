@@ -2,7 +2,7 @@ import React from 'react';
 import {Image, ImageSourcePropType, StyleSheet} from 'react-native';
 import {Box, Typography} from '@components';
 import {TagList} from './TagList';
-import {Colors, ESpacings, cocktailDetailInfoBlockWidth, buttonsMenuWidth} from '@constants';
+import {Colors, ESpacings, ImageSize, roundButtonsWidth} from '@constants';
 
 interface IProps {
   name: string;
@@ -26,7 +26,7 @@ export const Info: React.FC<IProps> = ({
       <Typography
         title
         color={Colors.dark}
-        marginRight={buttonsMenuWidth + ESpacings.s16}
+        marginRight={roundButtonsWidth + ESpacings.s16}
         marginVertical={ESpacings.s16}
         marginLeft={ESpacings.s16}>
         {name}
@@ -47,7 +47,7 @@ export const Info: React.FC<IProps> = ({
       </Typography>
       <Box
         backgroundColor={Colors.reddish}
-        width={cocktailDetailInfoBlockWidth}
+        width={ImageSize.L}
         marginLeft={50}
         style={styles.imgContainer}>
         <Image
@@ -71,8 +71,8 @@ const styles = StyleSheet.create({
     zIndex: 10,
   },
   cocktailImg: {
-    height: cocktailDetailInfoBlockWidth,
-    width: cocktailDetailInfoBlockWidth,
+    height: ImageSize.L,
+    width: ImageSize.L,
   },
   imgContainer: {
     elevation: 10,

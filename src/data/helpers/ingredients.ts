@@ -1,6 +1,11 @@
-import {IIngredientDetail, IIngredientResponse} from '../types';
+import {
+  IIngredientDetail,
+  IIngredient,
+  IIngredientDetailResponse,
+  IIngredientResponse,
+} from '../types';
 
-export const mapIngredient = (resp: IIngredientResponse): IIngredientDetail => {
+export const mapIngredientDetail = (resp: IIngredientDetailResponse): IIngredientDetail => {
   const {
     idIngredient: id,
     strIngredient: name,
@@ -18,4 +23,12 @@ export const mapIngredient = (resp: IIngredientResponse): IIngredientDetail => {
     type,
     isAlcohol: strAlcohol === 'Yes',
   }
+};
+
+export const mapIngredient = (resp: IIngredientResponse): IIngredient => ({
+  name: resp.strIngredient1,
+});
+
+export const mapIngredients = (resp: IIngredientResponse[]): IIngredient[] => {
+  return resp.map(mapIngredient);
 };

@@ -1,5 +1,5 @@
 import React from 'react';
-import {MenuButton} from './MenuButton';
+import {RoundButton} from './RoundButton';
 import {ButtonsMenuBlock} from './ButtonsMenuBlock';
 
 interface IProps {
@@ -9,7 +9,7 @@ interface IProps {
 export const SmallMenu: React.FC<IProps> = ({onPress}) => {
   return (
     <ButtonsMenuBlock>
-      <MenuButton
+      <RoundButton
         onPress={onPress}
         icon={"close"}
       />

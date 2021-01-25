@@ -1,10 +1,11 @@
-export interface ICocktailDetail extends ICocktail {
-  category: string;
+import {ICategory, ICategoryResponse} from './category';
+
+export interface ICocktailDetail extends ICocktail, ICategory {
   iba: string;
   glass: string;
   instructions: string;
   isAlcohol: boolean;
-  ingredients: IIngredient[];
+  ingredients: ICocktailIngredient[];
 }
 
 export interface ICocktail {
@@ -13,14 +14,13 @@ export interface ICocktail {
   img: string;
 }
 
-export interface IIngredient {
+export interface ICocktailIngredient {
   name: string;
   value: string | null;
   img: string;
 }
 
-export interface ICocktailDetailResponse extends ICocktailResponse{
-  strCategory: string;
+export interface ICocktailDetailResponse extends ICocktailResponse, ICategoryResponse {
   strIBA: string;
   strAlcoholic: string;
   strGlass: string;

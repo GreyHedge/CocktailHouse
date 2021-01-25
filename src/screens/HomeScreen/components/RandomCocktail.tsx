@@ -1,13 +1,12 @@
 import React, {useCallback, useEffect, useState} from 'react';
-import {ICocktail, mapCocktailList} from "@data";
-import {Colors, ERounding, ESpacings} from "@constants";
-import {Box, Button, CocktailCard, Typography} from "@components";
-import axios from "axios";
-import {ScrollView, StyleSheet} from "react-native";
-import Icon from "react-native-vector-icons/AntDesign";
+import {ScrollView, StyleSheet} from 'react-native';
+import axios from 'axios';
+import {Box, CocktailCard, RectButton, Typography} from '@components';
+import {ICocktail, mapCocktailList} from '@data';
+import {Colors, ERounding, ESpacings} from '@constants';
 
 const getRandomCocktail = () => axios.get('https://www.thecocktaildb.com/api/json/v1/1/random.php');
-const getPromiseArray = (count: number) => Array.from(new Array(count)).map((_) => getRandomCocktail());
+const getPromiseArray = (count: number) => Array.from(new Array(count)).map(() => getRandomCocktail());
 const getRandomCocktails = (setCocktails: (cocktails: ICocktail[]) => void) => {
   Promise.all(getPromiseArray(5))
     .then((res) => {
@@ -41,30 +40,16 @@ export const RandomCocktail: React.FC = () => {
         marginVertical={ESpacings.s16}>
         <Typography
           h1
+          color={Colors.dark}
           marginVertical={ESpacings.s16}>
           Random cocktails
         </Typography>
-        <Box style={styles.button}>
-          <Button onPress={handleReloadPress}>
-            <Box
-              row
-              paddingHorizontal={ESpacings.s16}
-              justifyContent="center"
-              alignItems="center">
-              <Typography
-                h2
-                semibold
-                marginRight={ESpacings.s8}
-                marginVertical={ESpacings.s8}>
-                Refresh
-              </Typography>
-              <Icon
-                name="reload1"
-                size={20}
-              />
-            </Box>
-          </Button>
-        </Box>
+        <RectButton
+          border
+          text="Refresh"
+          icon="reload1"
+          onPress={handleReloadPress}
+        />
       </Box>
       <ScrollView
         contentContainerStyle={styles.container}

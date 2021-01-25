@@ -1,4 +1,4 @@
-export interface IIngredientResponse {
+export interface IIngredientDetailResponse {
   idIngredient: string;
   strIngredient: string;
   strDescription: string | null;
@@ -7,11 +7,18 @@ export interface IIngredientResponse {
   strABV: string | null;
 }
 
-export interface IIngredientDetail {
+export interface IIngredientResponse {
+  strIngredient1: string;
+}
+
+export interface IIngredientDetail extends IIngredient {
   id: string;
-  name: string;
   description: string | null;
   type: string | null;
   isAlcohol: boolean;
   abv: string | null;
+}
+
+export interface IIngredient {
+  name: string;
 }

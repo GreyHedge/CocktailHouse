@@ -3,7 +3,7 @@ import {FlatList, ListRenderItemInfo, StyleSheet} from 'react-native';
 import axios from 'axios';
 import {Box, CocktailCard, SmallMenu, Typography} from '@components';
 import {ICocktail, mapCocktailList} from '@data';
-import {buttonsMenuWidth, Colors, ESpacings} from '@constants';
+import {roundButtonsWidth, Colors, ESpacings} from '@constants';
 
 const handleRenderItem = (info: ListRenderItemInfo<ICocktail>) => {
   return (
@@ -42,7 +42,7 @@ export const ListScreen: React.FC = () => {
         color={Colors.ice}
         marginVertical={ESpacings.s16}
         marginLeft={ESpacings.s16}
-        marginRight={buttonsMenuWidth + ESpacings.s16}>
+        marginRight={roundButtonsWidth + ESpacings.s16}>
         Cocktails with Gin
       </Typography>
       <FlatList
@@ -51,7 +51,7 @@ export const ListScreen: React.FC = () => {
         showsVerticalScrollIndicator={false}
         contentContainerStyle={styles.container}
       />
-      <SmallMenu onPress={() => {}}/>
+      <SmallMenu onPress={() => {console.log('close pressed')}}/>
     </Box>
   )
 };
@@ -59,7 +59,7 @@ export const ListScreen: React.FC = () => {
 const styles = StyleSheet.create({
   container: {
     paddingLeft: ESpacings.s16,
-    paddingRight: buttonsMenuWidth + ESpacings.s16,
+    paddingRight: roundButtonsWidth + ESpacings.s16,
   }
 });
 

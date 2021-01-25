@@ -1,7 +1,7 @@
 import React, {ReactNode} from 'react';
 import {StyleSheet} from 'react-native';
 import {Box} from './Box';
-import {buttonsMenuWidth, Colors, ESpacings} from '@constants';
+import {roundButtonsWidth, Colors, ESpacings} from '@constants';
 
 interface IProps {
   children: ReactNode;
@@ -11,11 +11,11 @@ export const ButtonsMenuBlock: React.FC<IProps> = ({children}) => {
   return (
     <Box
       backgroundColor={Colors.blue}
-      width={buttonsMenuWidth}
+      width={roundButtonsWidth}
       marginTop={50}
       paddingVertical={ESpacings.s16}
-      borderBottomLeftRadius={buttonsMenuWidth / 2}
-      borderTopLeftRadius={buttonsMenuWidth / 2}
+      borderBottomLeftRadius={roundButtonsWidth / 2}
+      borderTopLeftRadius={roundButtonsWidth / 2}
       alignItems="center"
       style={styles.container}>
       {children}
