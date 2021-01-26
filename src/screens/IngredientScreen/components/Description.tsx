@@ -2,7 +2,7 @@ import React from 'react';
 import {Image, StyleSheet} from 'react-native';
 import {Box, Typography} from '@components';
 import {Colors, ERounding, ESpacings, ingredientImgSize} from '@constants';
-import {width} from '@helpers';
+import {commonStyles, width} from '@helpers';
 
 interface IProps {
   name: string;
@@ -16,7 +16,7 @@ export const Description: React.FC<IProps> = ({
   return (
   <Box
     alignItems="flex-end"
-    style={styles.shadow}>
+    style={[styles.shadow, commonStyles.shadowLeft]}>
     <Box
       backgroundColor={Colors.dark}
       width={width * 0.8}
@@ -54,12 +54,6 @@ export const Description: React.FC<IProps> = ({
 const styles = StyleSheet.create({
   shadow: {
     elevation: 10,
-    shadowOffset: {
-      width: -2,
-      height: 2,
-    },
-    shadowOpacity: 0.2,
-    shadowRadius: 2,
   },
   img: {
     width: ingredientImgSize,

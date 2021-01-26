@@ -25,7 +25,7 @@ export const RowButton: React.FC<IProps> =({
         paddingVertical={ESpacings.s16}
         paddingRight={ESpacings.s16}
         marginLeft={ESpacings.s16}
-        style={isBorderHidden ? {} : styles.container}>
+        style={isBorderHidden ? null : styles.container}>
         <Typography headLine>
           {name}
         </Typography>

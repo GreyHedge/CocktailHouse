@@ -54,6 +54,8 @@ export const Categories: React.FC = () => {
               rippleColor={Colors.ice}
               onPress={() => {console.log('pressed', category)}}
               style={styles.category}
+              marginBottom={ESpacings.s8}
+              marginRight={ESpacings.s8}
             />
           )
         })}
@@ -67,8 +69,6 @@ const styles = StyleSheet.create({
     flexWrap: 'wrap',
   },
   category: {
-    marginBottom: ESpacings.s8,
-    marginRight: ESpacings.s8,
     backgroundColor: Colors.dark,
   },
 });

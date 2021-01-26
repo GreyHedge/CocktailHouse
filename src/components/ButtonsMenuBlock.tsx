@@ -2,6 +2,7 @@ import React, {ReactNode} from 'react';
 import {StyleSheet} from 'react-native';
 import {Box} from './Box';
 import {roundButtonsWidth, Colors, ESpacings} from '@constants';
+import {commonStyles} from '@helpers';
 
 interface IProps {
   children: ReactNode;
@@ -17,7 +18,7 @@ export const ButtonsMenuBlock: React.FC<IProps> = ({children}) => {
       borderBottomLeftRadius={roundButtonsWidth / 2}
       borderTopLeftRadius={roundButtonsWidth / 2}
       alignItems="center"
-      style={styles.container}>
+      style={[styles.container, commonStyles.shadowLeft]}>
       {children}
     </Box>
   )
@@ -29,11 +30,5 @@ const styles = StyleSheet.create({
     top: 0,
     right: 0,
     elevation: 10,
-    shadowOffset: {
-      width: -2,
-      height: 2,
-    },
-    shadowOpacity: 0.2,
-    shadowRadius: 2,
   }
 });

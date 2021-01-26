@@ -25,7 +25,9 @@ export const HomeScreen: React.FC = () => {
         onTextChange={setSearchText}
         onSubmit={() => {console.log('search text is', searchText)}}
       />
-      <ScrollView showsVerticalScrollIndicator={false} ref={scrollViewRef}>
+      <ScrollView
+        showsVerticalScrollIndicator={false}
+        ref={scrollViewRef}>
         <RandomCocktail />
         <Ingredients />
         <Categories />

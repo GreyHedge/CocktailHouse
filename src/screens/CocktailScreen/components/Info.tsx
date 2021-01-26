@@ -3,6 +3,7 @@ import {Image, ImageSourcePropType, StyleSheet} from 'react-native';
 import {Box, Typography} from '@components';
 import {TagList} from './TagList';
 import {Colors, ESpacings, ImageSize, roundButtonsWidth} from '@constants';
+import {commonStyles} from '@helpers';
 
 interface IProps {
   name: string;
@@ -49,7 +50,7 @@ export const Info: React.FC<IProps> = ({
         backgroundColor={Colors.reddish}
         width={ImageSize.L}
         marginLeft={50}
-        style={styles.imgContainer}>
+        style={[styles.imgContainer, commonStyles.shadowRight]}>
         <Image
           style={styles.cocktailImg}
           source={img}
@@ -76,11 +77,5 @@ const styles = StyleSheet.create({
   },
   imgContainer: {
     elevation: 10,
-    shadowOffset: {
-      width: 2,
-      height: 2,
-    },
-    shadowOpacity: 0.2,
-    shadowRadius: 2,
   },
 });

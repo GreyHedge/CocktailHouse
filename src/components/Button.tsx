@@ -7,7 +7,7 @@ interface IProps {
   rippleColor?: string;
   radius?: number
   onPress: () => void;
-  style?: ViewStyle | ViewStyle[];
+  style?: ViewStyle | (ViewStyle | null)[];
 }
 
 export const Button: React.FC<IProps> = ({
@@ -15,7 +15,7 @@ export const Button: React.FC<IProps> = ({
   onPress,
   rippleColor = Colors.dark,
   radius,
-  style = {},
+  style = null,
 }) => {
   return (
     <Pressable
@@ -36,6 +36,6 @@ const styles = StyleSheet.create({
   },
 });
 
-const buttonStyle = (style: ViewStyle | ViewStyle[] | null) => ({pressed} : {pressed:  boolean}) => pressed
+const buttonStyle = (style: ViewStyle | (ViewStyle | null)[] | null) => ({pressed} : {pressed:  boolean}) => pressed
   ? [styles.pressedButton, style]
   : [styles.button, style];

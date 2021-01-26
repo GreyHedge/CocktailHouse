@@ -18,7 +18,7 @@ export interface IBoxProps extends ViewProps, IPaddings, IMargins {
   borderTopRightRadius?: ERounding | number;
   borderBottomLeftRadius?: ERounding | number;
   borderBottomRightRadius?: ERounding | number;
-  style?: ViewStyle;
+  style?: ViewStyle | (ViewStyle | null)[] | null;
 }
 
 export const Box: React.FC<IBoxProps> = ({

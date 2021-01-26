@@ -2,6 +2,7 @@ import React from 'react';
 import {StyleSheet} from 'react-native';
 import {Box, Typography} from '@components';
 import {Colors, ERounding, ESpacings} from '@constants';
+import {commonStyles} from '@helpers';
 
 interface IProps {
   instructions: string;
@@ -18,7 +19,7 @@ export const Instructions: React.FC<IProps> = ({instructions, glass}) => {
       paddingBottom={ESpacings.s32}
       marginBottom={ESpacings.s16}
       paddingHorizontal={ESpacings.s16}
-      style={styles.shadow}
+      style={[styles.shadow, commonStyles.shadowRight]}
       borderBottomRightRadius={ERounding.r24}>
       <Typography
         h2
@@ -49,11 +50,5 @@ export const Instructions: React.FC<IProps> = ({instructions, glass}) => {
 const styles = StyleSheet.create({
   shadow: {
     elevation: 9,
-    shadowOffset: {
-      width: 2,
-      height: 2,
-    },
-    shadowOpacity: 0.2,
-    shadowRadius: 2,
   }
 });

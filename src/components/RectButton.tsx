@@ -1,12 +1,14 @@
 import React from 'react';
-import {StyleSheet, ViewStyle, Platform} from 'react-native';
+import {StyleSheet, ViewStyle} from 'react-native';
 import Icon from 'react-native-vector-icons/AntDesign';
 import {Button} from './Button';
 import {Box} from './Box';
 import {Typography} from './Typography';
 import {Colors, ERounding, ESpacings} from '@constants';
+import {IMargins} from './helpers';
+import {commonStyles} from '@helpers';
 
-interface IProps {
+interface IProps extends IMargins {
   text: string;
   onPress: () => void;
   border?: boolean;
@@ -14,6 +16,7 @@ interface IProps {
   style?: ViewStyle;
   textColor?: string;
   rippleColor?: string;
+  backgroundColor?: string;
 }
 
 export const RectButton: React.FC<IProps> = ({
@@ -24,12 +27,28 @@ export const RectButton: React.FC<IProps> = ({
   style = {},
   textColor = Colors.dark,
   rippleColor = Colors.dark,
+  margin,
+  marginTop,
+  marginBottom,
+  marginLeft,
+  marginRight,
+  marginHorizontal,
+  marginVertical,
 }) => {
   return (
-    <Box style={[styles.container, border ? styles.border : null, style]}>
+    <Box
+      margin={margin}
+      marginTop={marginTop}
+      marginBottom={marginBottom}
+      marginLeft={marginLeft}
+      marginRight={marginRight}
+      marginHorizontal={marginHorizontal}
+      marginVertical={marginVertical}
+      style={[commonStyles.noOverflow, styles.borderRadius]}>
       <Button
         rippleColor={rippleColor}
-        onPress={onPress}>
+        onPress={onPress}
+        style={[style, styles.borderRadius, border ? styles.border : null]}>
         <Box
           row
           paddingHorizontal={ESpacings.s16}
@@ -57,9 +76,8 @@ export const RectButton: React.FC<IProps> = ({
 };
 
 const styles = StyleSheet.create({
-  container: {
+  borderRadius: {
     borderRadius: ERounding.r8,
-    overflow: Platform.OS === 'android' ? 'hidden' : 'visible',
   },
   border: {
     borderColor: Colors.dark,

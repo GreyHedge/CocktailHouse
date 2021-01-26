@@ -3,17 +3,18 @@ import {StyleSheet} from 'react-native';
 import {Ingredient} from './Ingredient'
 import {Box, Typography} from '@components';
 import {Colors, ERounding, ESpacings} from '@constants';
-import {IIngredient} from '@data';
+import {ICocktailIngredient} from '@data';
+import {commonStyles} from '@helpers';
 
 interface IProps {
-  ingredients: IIngredient[];
+  ingredients: ICocktailIngredient[];
 }
 
 export const Ingredients: React.FC<IProps> = ({ingredients}) => {
   return (
     <Box
       alignItems="flex-end"
-      style={styles.container}>
+      style={[styles.container, commonStyles.shadowLeft]}>
       <Box
         backgroundColor={Colors.ice}
         width="80%"
@@ -49,11 +50,5 @@ const styles = StyleSheet.create({
   container: {
     elevation: 10,
     zIndex: 8,
-    shadowOffset: {
-      width: -2,
-      height: 2,
-    },
-    shadowOpacity: 0.2,
-    shadowRadius: 2,
   },
 });

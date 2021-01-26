@@ -60,6 +60,7 @@ export const RandomCocktail: React.FC = () => {
             key={cocktail.id}
             cocktail={cocktail}
             marginRight={ESpacings.s16}
+            onPress={() =>{console.log('pressed', cocktail.name)}}
           />
         ))}
       </ScrollView>
@@ -70,7 +71,7 @@ export const RandomCocktail: React.FC = () => {
 const styles = StyleSheet.create({
   container: {
     paddingLeft: ESpacings.s16,
-    marginBottom: ESpacings.s24,
+    paddingBottom:ESpacings.s24,
   },
   button: {
     borderColor: Colors.dark,
