@@ -1,9 +1,11 @@
 import React, {useEffect, useState} from 'react';
 import {FlatList, ListRenderItemInfo, StyleSheet} from 'react-native';
-import axios from 'axios';
 import {Box, CocktailCard, SmallMenu, Typography} from '@components';
-import {ICocktail, mapCocktailList} from '@data';
+import {EFilter, ICocktail, ICocktailDetailResponse, mapCocktailList} from '@data';
 import {roundButtonsWidth, Colors, ESpacings} from '@constants';
+import {CocktailListScreenProps} from '@navigation';
+import {getCocktails} from './helpers';
+import {AxiosResponse} from "axios";
 
 const handleRenderItem = (info: ListRenderItemInfo<ICocktail>) => {
   return (
@@ -14,19 +16,22 @@ const handleRenderItem = (info: ListRenderItemInfo<ICocktail>) => {
   )
 };
 
-export const ListScreen: React.FC = () => {
+export const CocktailListScreen: React.FC<CocktailListScreenProps> = ({
+  route,
+}) => {
+  const {params: {title, queryString, filter}} = route;
   const [cocktailList, setCocktailList] = useState<ICocktail[] | null>(null);
 
   useEffect(() => {
-    async function getCocktailList(name: string) {
+    async function getCocktailList(filter: EFilter, queryString: string) {
       try {
-        const response = await axios.get(`https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=${name}`);
+        const response: AxiosResponse<{drinks: ICocktailDetailResponse[]}> = await getCocktails(filter, queryString);
         setCocktailList(mapCocktailList(response.data.drinks));
       } catch (error) {
         console.error(error);
       }
     }
-    getCocktailList('Gin');
+    getCocktailList(filter, queryString);
   }, []);
 
   if (!cocktailList) {
@@ -37,14 +42,16 @@ export const ListScreen: React.FC = () => {
     <Box
       backgroundColor={Colors.dark}
       flex={1}>
-      <Typography
-        title
-        color={Colors.ice}
-        marginVertical={ESpacings.s16}
-        marginLeft={ESpacings.s16}
-        marginRight={roundButtonsWidth + ESpacings.s16}>
-        Cocktails with Gin
-      </Typography>
+      {!!title && (
+        <Typography
+          title
+          color={Colors.ice}
+          marginVertical={ESpacings.s16}
+          marginLeft={ESpacings.s16}
+          marginRight={roundButtonsWidth + ESpacings.s16}>
+          {title}
+        </Typography>
+      )}
       <FlatList
         data={cocktailList}
         renderItem={handleRenderItem}

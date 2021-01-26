@@ -7,7 +7,7 @@ import {commonStyles} from '@helpers';
 
 interface IProps {
   name: string;
-  iba: string;
+  iba: string | null;
   isAlcohol: boolean;
   img: ImageSourcePropType;
   category: string;
@@ -32,20 +32,24 @@ export const Info: React.FC<IProps> = ({
         marginLeft={ESpacings.s16}>
         {name}
       </Typography>
-      <Typography
-        h3
-        color={Colors.dark}
-        marginLeft={ESpacings.s16}>
-        IBA
-      </Typography>
-      <Typography
-        body
-        color={Colors.dark}
-        paddingRight={60}
-        marginBottom={ESpacings.s16}
-        marginLeft={ESpacings.s16}>
-        {iba}
-      </Typography>
+      {!!iba && (
+        <>
+          <Typography
+            h3
+            color={Colors.dark}
+            marginLeft={ESpacings.s16}>
+            IBA
+          </Typography>
+          <Typography
+            body
+            color={Colors.dark}
+            paddingRight={60}
+            marginBottom={ESpacings.s16}
+            marginLeft={ESpacings.s16}>
+            {iba}
+          </Typography>
+        </>
+      )}
       <Box
         backgroundColor={Colors.reddish}
         width={ImageSize.L}

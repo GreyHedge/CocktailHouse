@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useCallback} from 'react';
 import {Image, ImageSourcePropType, StyleSheet} from 'react-native';
 import Icon from 'react-native-vector-icons/AntDesign';
 import {Typography, Box, Button} from '@components';
@@ -8,7 +8,8 @@ export interface IIngredient {
   name: string;
   img: ImageSourcePropType;
   dose: string | null;
-  isLast?: boolean
+  isLast?: boolean;
+  onPress: (name: string) => void;
 }
 
 export const Ingredient: React.FC<IIngredient> = ({
@@ -16,9 +17,14 @@ export const Ingredient: React.FC<IIngredient> = ({
   img,
   dose,
   isLast = false,
+  onPress,
 }) => {
+  const handlePress = useCallback(() => {
+    onPress(name);
+  }, [name, onPress]);
+
   return (
-    <Button onPress={() => {console.log('press on ' + name)}}>
+    <Button onPress={handlePress}>
       <Box
         row
         marginLeft={ESpacings.s8}

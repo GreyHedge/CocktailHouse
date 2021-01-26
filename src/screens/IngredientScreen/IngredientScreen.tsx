@@ -5,8 +5,12 @@ import {Box, SmallMenu} from '@components';
 import {NameAndTags, Description} from './components';
 import {mapIngredientDetail, IIngredientDetail} from '@data';
 import {Colors} from '@constants';
+import {IngredientScreenProps} from '@navigation';
 
-export const IngredientScreen: React.FC = () => {
+export const IngredientScreen: React.FC<IngredientScreenProps> = ({
+  route,
+}) => {
+  const {params: {name: ingredientName}} = route;
   const [ingredient, setIngredient] = useState<IIngredientDetail | null>(null);
 
   useEffect(() => {
@@ -18,7 +22,7 @@ export const IngredientScreen: React.FC = () => {
         console.error(error);
       }
     }
-    getCocktail('Tequila');
+    getCocktail(ingredientName);
   }, []);
 
   if (!ingredient) {
@@ -49,7 +53,7 @@ export const IngredientScreen: React.FC = () => {
           description={description}
         />
       </ScrollView>
-      <SmallMenu onPress={() => {console.log('close pressed')}} />
+      <SmallMenu />
     </Box>
   )
 };

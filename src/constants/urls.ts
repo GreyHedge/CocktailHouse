@@ -1,0 +1,11 @@
+export const baseUrl = 'https://www.thecocktaildb.com/api/json/v1/1/';
+export const cocktailDetail = 'lookup.php?i=';
+export const ingredientDetail = 'search.php?i=';
+export const randomCocktail = 'random.php';
+export const allIngredients = 'list.php?i=list';
+export const allCategories = 'list.php?c=list';
+export const cocktailsByCategory = 'filter.php?c=';
+export const cocktailsByLetter = 'search.php?f=';
+export const cocktailsByName = 'search.php?s=';
+export const cocktailsByIngredient = 'filter.php?i=';
+export const cocktailsByGlass = 'filter.php?g=';

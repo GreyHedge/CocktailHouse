@@ -9,6 +9,7 @@ module.exports = {
           '@constants': './src/constants/index.ts',
           '@helpers': './src/helpers/index.ts',
           '@screens': './src/screens/index.ts',
+          '@navigation': './src/navigation/index.ts',
           '@data': './src/data/index.ts',
         },
       },

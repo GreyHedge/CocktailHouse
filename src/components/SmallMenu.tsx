@@ -1,16 +1,18 @@
-import React from 'react';
+import React, {useCallback} from 'react';
+import {useNavigation} from '@react-navigation/native';
 import {RoundButton} from './RoundButton';
 import {ButtonsMenuBlock} from './ButtonsMenuBlock';
 
-interface IProps {
-  onPress: () => void;
-}
+export const SmallMenu: React.FC = () => {
+  const {goBack} = useNavigation();
+  const handlePress = useCallback(() => {
+    goBack()
+  }, []);
 
-export const SmallMenu: React.FC<IProps> = ({onPress}) => {
   return (
     <ButtonsMenuBlock>
       <RoundButton
-        onPress={onPress}
+        onPress={handlePress}
         icon={"close"}
       />
     </ButtonsMenuBlock>

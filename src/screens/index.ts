@@ -1,4 +1,4 @@
 export * from './CocktailScreen';
 export * from './IngredientScreen';
-export * from './ListScreen';
+export * from './CocktailListScreen';
 export * from './HomeScreen';

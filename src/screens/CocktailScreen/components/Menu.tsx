@@ -1,11 +1,15 @@
 import React from 'react';
 import {ButtonsMenuBlock, RoundButton} from '@components';
 
-export const Menu: React.FC = () => {
+interface IProps {
+  onClosePress: () => void;
+}
+
+export const Menu: React.FC<IProps> = ({onClosePress}) => {
   return (
     <ButtonsMenuBlock>
       <RoundButton
-        onPress={()=>{console.log('close pressed')}}
+        onPress={onClosePress}
         icon={"close"}
       />
       <RoundButton

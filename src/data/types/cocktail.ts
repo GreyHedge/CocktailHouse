@@ -1,7 +1,7 @@
 import {ICategory, ICategoryResponse} from './category';
 
 export interface ICocktailDetail extends ICocktail, ICategory {
-  iba: string;
+  iba: string | null;
   glass: string;
   instructions: string;
   isAlcohol: boolean;
@@ -21,7 +21,7 @@ export interface ICocktailIngredient {
 }
 
 export interface ICocktailDetailResponse extends ICocktailResponse, ICategoryResponse {
-  strIBA: string;
+  strIBA: string | null;
   strAlcoholic: string;
   strGlass: string;
   strInstructions: string;

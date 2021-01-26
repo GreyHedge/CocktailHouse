@@ -1,6 +1,7 @@
 import React from 'react';
 import {StyleSheet} from 'react-native';
-import {Box, RoundButton} from '@components';
+import {Box} from '@components';
+import {Letter} from './Letter';
 import {alphabet, Colors, ERounding} from '@constants';
 
 export const LetterSearch: React.FC = () => {
@@ -13,15 +14,7 @@ export const LetterSearch: React.FC = () => {
       borderBottomLeftRadius={ERounding.r24}
       style={styles.alphabetContainer}>
       {alphabet.map((letter) => {
-        return (
-          <RoundButton
-            key={letter}
-            text={letter}
-            color={Colors.ice}
-            rippleColor={Colors.ice}
-            onPress={() => {console.log('press', letter)}}
-          />
-        )
+        return <Letter key={letter} letter={letter} />
       })}
     </Box>
   )
@@ -30,5 +23,5 @@ export const LetterSearch: React.FC = () => {
 const styles = StyleSheet.create({
   alphabetContainer: {
     flexWrap: 'wrap',
-  }
+  },
 });

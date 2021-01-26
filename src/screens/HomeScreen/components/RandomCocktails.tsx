@@ -15,7 +15,7 @@ const getRandomCocktails = (setCocktails: (cocktails: ICocktail[]) => void) => {
     .catch((e) => console.log('error', e))
 };
 
-export const RandomCocktail: React.FC = () => {
+export const RandomCocktails: React.FC = () => {
   const [cocktails, setCocktails] = useState<ICocktail[] | null>(null);
 
   useEffect(() => {
@@ -60,7 +60,6 @@ export const RandomCocktail: React.FC = () => {
             key={cocktail.id}
             cocktail={cocktail}
             marginRight={ESpacings.s16}
-            onPress={() =>{console.log('pressed', cocktail.name)}}
           />
         ))}
       </ScrollView>

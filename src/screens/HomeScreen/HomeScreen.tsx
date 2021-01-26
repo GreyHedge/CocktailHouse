@@ -1,10 +1,18 @@
 import React, {useCallback, useState, useRef} from 'react';
 import {ScrollView} from 'react-native';
 import {Box} from '@components';
-import {Categories, Ingredients, LetterSearch, RandomCocktail, RowButton, SearchInput,} from './components';
+import {
+  Categories,
+  Ingredients,
+  LetterSearch,
+  RandomCocktails,
+  RowButton,
+  SearchInput,
+} from './components';
 import {Colors, ESpacings} from '@constants';
+import {HomeScreenProps} from '@navigation';
 
-export const HomeScreen: React.FC = () => {
+export const HomeScreen: React.FC<HomeScreenProps> = () => {
   const [searchText, setSearchText] = useState('');
   const [isLettersBoxOpen, setIsLettersBoxOpen] = useState<boolean>(false);
   const scrollViewRef = useRef<ScrollView>(null);
@@ -28,7 +36,7 @@ export const HomeScreen: React.FC = () => {
       <ScrollView
         showsVerticalScrollIndicator={false}
         ref={scrollViewRef}>
-        <RandomCocktail />
+        <RandomCocktails />
         <Ingredients />
         <Categories />
         <RowButton

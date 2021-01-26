@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import axios from 'axios';
-import {Box, RectButton, Typography} from '@components';
+import {Box, Typography} from '@components';
+import {Category} from './Category';
 import {Colors, ESpacings} from '@constants';
 import {ICategory, mapCategoryList} from '@data';
 import {StyleSheet} from "react-native";
@@ -46,16 +47,9 @@ export const Categories: React.FC = () => {
         style={styles.container}>
         {categories.map(({category}) => {
           return (
-            <RectButton
+            <Category
               key={category}
-              border
-              text={category}
-              textColor={Colors.ice}
-              rippleColor={Colors.ice}
-              onPress={() => {console.log('pressed', category)}}
-              style={styles.category}
-              marginBottom={ESpacings.s8}
-              marginRight={ESpacings.s8}
+              category={category}
             />
           )
         })}
@@ -67,8 +61,5 @@ export const Categories: React.FC = () => {
 const styles = StyleSheet.create({
   container: {
     flexWrap: 'wrap',
-  },
-  category: {
-    backgroundColor: Colors.dark,
   },
 });

@@ -1,18 +1,22 @@
+import 'react-native-gesture-handler';
 import React from 'react';
 import {
   SafeAreaView,
   StyleSheet,
   StatusBar,
 } from 'react-native';
+import {NavigationContainer} from '@react-navigation/native';
 import {Colors} from '@constants'
-import {HomeScreen, CocktailScreen, ListScreen} from '@screens';
+import {HomeStack} from '@navigation';
 
 const App: React.FC = () => {
   return (
     <>
       <StatusBar barStyle="dark-content" backgroundColor="#f4f6f0"/>
       <SafeAreaView style={styles.wrapper}>
-        <HomeScreen />
+        <NavigationContainer>
+          <HomeStack />
+        </NavigationContainer>
       </SafeAreaView>
     </>
   );

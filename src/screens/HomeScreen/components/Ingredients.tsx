@@ -53,7 +53,6 @@ export const Ingredients: React.FC = () => {
           <IngredientCard
             key={ingredient.name}
             ingredient={ingredient}
-            onPress={() => {console.log('pressed', ingredient.name)}}
           />
         ))}
       </ScrollView>

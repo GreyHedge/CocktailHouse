@@ -1,25 +1,32 @@
-import React from 'react';
+import React, {useCallback} from 'react';
 import {Image, StyleSheet} from 'react-native';
-import {Box, Button, RoundButton, Typography} from '@components';
+import {useNavigation} from '@react-navigation/native';
+import {Box} from './Box';
+import {Button} from './Button';
+import {RoundButton} from './RoundButton';
+import {Typography} from './Typography';
 import {roundButtonsWidth, Colors, ERounding, ESpacings, ImageSize} from '@constants';
 import {ICocktail} from '@data';
 import {commonStyles} from '@helpers';
+import {EScreens} from "@navigation";
 
 interface IProps {
   cocktail: ICocktail;
   marginBottom?: ESpacings | number;
   marginRight?: ESpacings | number;
-  onPress: () => void;
 }
 
 export const CocktailCard: React.FC<IProps> = ({
   cocktail,
-  onPress,
   marginBottom = ESpacings.s0,
   marginRight = ESpacings.s0,
 }) => {
-  const {name, img} = cocktail;
+  const {id, name, img} = cocktail;
+  const {navigate} = useNavigation();
 
+  const handlePress = useCallback(() => {
+    navigate(EScreens.COCKTAIL_SCREEN, {id})
+  }, [id]);
 
   return (
     <Box
@@ -33,7 +40,7 @@ export const CocktailCard: React.FC<IProps> = ({
         style={styles.container}>
         <Button
           rippleColor={Colors.reddish}
-          onPress={onPress}
+          onPress={handlePress}
           style={styles.button}>
           <Box
             row
