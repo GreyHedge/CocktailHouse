@@ -1,6 +1,13 @@
 import React from 'react'
 import {createStackNavigator} from '@react-navigation/stack';
-import {CocktailListScreen, CocktailScreen, HomeScreen, IngredientScreen} from '@screens';
+import {
+  CocktailListScreen,
+  CocktailScreen,
+  HomeScreen,
+  IngredientScreen,
+  IngredientListScreen,
+  GlassListScreen,
+} from '@screens';
 import {EScreens} from './types';
 
 const Stack = createStackNavigator();
@@ -23,6 +30,14 @@ export const HomeStack: React.FC = () => {
       <Stack.Screen
         name={EScreens.INGREDIENT_SCREEN}
         component={IngredientScreen}
+      />
+      <Stack.Screen
+        name={EScreens.INGREDIENT_LIST_SCREEN}
+        component={IngredientListScreen}
+      />
+      <Stack.Screen
+        name={EScreens.GLASS_LIST_SCREEN}
+        component={GlassListScreen}
       />
     </Stack.Navigator>
   )

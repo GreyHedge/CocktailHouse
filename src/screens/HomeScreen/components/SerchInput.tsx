@@ -2,6 +2,7 @@ import React from 'react';
 import {StyleSheet, TextInput} from 'react-native';
 import {Box, RoundButton} from '@components';
 import {Colors, ERounding, ESpacings} from '@constants';
+import {commonStyles} from "@helpers";
 
 interface IProps {
   text: string;
@@ -19,7 +20,8 @@ export const SearchInput: React.FC<IProps> = ({
       row
       margin={ESpacings.s16}
       borderRadius={ERounding.r24}
-      backgroundColor={Colors.ice}>
+      backgroundColor={Colors.ice}
+      style={[commonStyles.shadowRight, styles.container]}>
       <TextInput
         value={text}
         onChangeText={onTextChange}
@@ -33,6 +35,9 @@ export const SearchInput: React.FC<IProps> = ({
 };
 
 const styles = StyleSheet.create({
+  container: {
+    elevation: 10,
+  },
   input: {
     flex: 1,
     fontFamily: 'Montserrat-Regular',

@@ -4,11 +4,12 @@ import {Box, Typography} from '@components';
 import {TagList} from './TagList';
 import {Colors, ESpacings, ImageSize, roundButtonsWidth} from '@constants';
 import {commonStyles} from '@helpers';
+import {IAlcoholCategory} from '@data';
 
 interface IProps {
   name: string;
   iba: string | null;
-  isAlcohol: boolean;
+  alcoholic: IAlcoholCategory;
   img: ImageSourcePropType;
   category: string;
   glass: string;
@@ -17,7 +18,7 @@ interface IProps {
 export const Info: React.FC<IProps> = ({
   name,
   iba,
-  isAlcohol,
+  alcoholic,
   img,
   category,
   glass,
@@ -61,7 +62,7 @@ export const Info: React.FC<IProps> = ({
           resizeMode="contain"
         />
         <TagList
-          isAlcohol={isAlcohol}
+          alcoholic={alcoholic}
           category={category}
           glass={glass}
         />

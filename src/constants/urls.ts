@@ -9,3 +9,4 @@ export const cocktailsByLetter = 'search.php?f=';
 export const cocktailsByName = 'search.php?s=';
 export const cocktailsByIngredient = 'filter.php?i=';
 export const cocktailsByGlass = 'filter.php?g=';
+export const cocktailsByAlcohol = 'filter.php?a=';

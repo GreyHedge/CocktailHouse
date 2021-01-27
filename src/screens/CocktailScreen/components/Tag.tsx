@@ -8,15 +8,17 @@ interface IProps {
   name: string;
   value: string;
   isLast?: boolean;
+  onPress: ()  => void;
 }
 
 export const Tag: React.FC<IProps> = ({
   name,
   value,
   isLast = false,
+  onPress,
 }) => {
   return (
-    <Button rippleColor={Colors.blue} onPress={() => {console.log('press on ' + name)}}>
+    <Button rippleColor={Colors.blue} onPress={onPress}>
       <Box
         row
         alignItems="center"

@@ -11,6 +11,7 @@ import {commonStyles} from '@helpers';
 interface IProps extends IMargins {
   text: string;
   onPress: () => void;
+  bigText?: boolean;
   border?: boolean;
   icon?: string;
   style?: ViewStyle;
@@ -21,6 +22,7 @@ interface IProps extends IMargins {
 
 export const RectButton: React.FC<IProps> = ({
   text,
+  bigText,
   icon,
   onPress,
   border = false,
@@ -55,7 +57,8 @@ export const RectButton: React.FC<IProps> = ({
           justifyContent="center"
           alignItems="center">
           <Typography
-            h3
+            h2
+            h3={!bigText}
             semibold
             color={textColor}
             marginVertical={ESpacings.s8}>

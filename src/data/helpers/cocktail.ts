@@ -31,7 +31,7 @@ export const mapCocktailDetails = (resp: ICocktailDetailResponse): ICocktailDeta
     glass,
     ingredients,
     instructions,
-    isAlcohol: strAlcoholic === 'Alcoholic',
+    alcoholic: strAlcoholic,
     ...mapCocktail(rest),
   };
 };

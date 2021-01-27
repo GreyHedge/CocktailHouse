@@ -1,15 +1,16 @@
 import React, {useCallback} from 'react';
 import {Image, ImageSourcePropType, StyleSheet} from 'react-native';
+import {useNavigation} from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/AntDesign';
-import {Typography, Box, Button} from '@components';
+import {Box, Button, Typography} from '@components';
 import {Colors, ESpacings} from '@constants';
+import {EScreens} from "@navigation";
 
 export interface IIngredient {
   name: string;
   img: ImageSourcePropType;
   dose: string | null;
   isLast?: boolean;
-  onPress: (name: string) => void;
 }
 
 export const Ingredient: React.FC<IIngredient> = ({
@@ -17,11 +18,12 @@ export const Ingredient: React.FC<IIngredient> = ({
   img,
   dose,
   isLast = false,
-  onPress,
 }) => {
+  const {navigate} = useNavigation();
+
   const handlePress = useCallback(() => {
-    onPress(name);
-  }, [name, onPress]);
+    navigate(EScreens.INGREDIENT_SCREEN, {name})
+  }, [name]);
 
   return (
     <Button onPress={handlePress}>
@@ -38,7 +40,10 @@ export const Ingredient: React.FC<IIngredient> = ({
           source={img}
           resizeMode="contain"
         />
-        <Box justifyContent="center" flex={1}>
+        <Box
+          justifyContent="center"
+          marginRight={ESpacings.s8}
+          flex={1}>
           <Typography h3 color={Colors.dark}>{name}</Typography>
           {dose && (
             <Typography

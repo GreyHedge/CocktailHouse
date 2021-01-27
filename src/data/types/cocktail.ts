@@ -1,10 +1,11 @@
 import {ICategory, ICategoryResponse} from './category';
+import {IGlass, IGlassResponse} from './glass';
+import {EFilter, IAlcoholCategory} from './filters';
 
-export interface ICocktailDetail extends ICocktail, ICategory {
+export interface ICocktailDetail extends ICocktail, ICategory, IGlass {
   iba: string | null;
-  glass: string;
   instructions: string;
-  isAlcohol: boolean;
+  alcoholic: IAlcoholCategory;
   ingredients: ICocktailIngredient[];
 }
 
@@ -20,10 +21,9 @@ export interface ICocktailIngredient {
   img: string;
 }
 
-export interface ICocktailDetailResponse extends ICocktailResponse, ICategoryResponse {
+export interface ICocktailDetailResponse extends ICocktailResponse, ICategoryResponse, IGlassResponse {
   strIBA: string | null;
-  strAlcoholic: string;
-  strGlass: string;
+  strAlcoholic: EFilter.ALCOHOLIC | EFilter.NON_ALCOHOLIC | EFilter.OPTIONAL_ALCOHOL;
   strInstructions: string;
   strIngredient1: string | null;
   strIngredient2: string | null;

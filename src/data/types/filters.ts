@@ -5,6 +5,16 @@ export enum EFilter {
   GLASS = 'glass',
   INGREDIENT = 'ingredient',
   ALCOHOLIC = 'alcoholic',
-  NON_ALCOHOLIC = 'nonAlcoholic',
-  OPTIONAL_ALCOHOL = 'optionalAlcohol',
+  NON_ALCOHOLIC = 'non alcoholic',
+  OPTIONAL_ALCOHOL = 'optional alcohol',
 }
+
+export interface IAlcoholFiltersResponse {
+  strAlcoholic: string;
+}
+
+export interface IAlcoholFilter {
+  name: IAlcoholFilter;
+}
+
+export type IAlcoholCategory = EFilter.ALCOHOLIC | EFilter.NON_ALCOHOLIC | EFilter.OPTIONAL_ALCOHOL;

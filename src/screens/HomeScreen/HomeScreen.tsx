@@ -1,5 +1,5 @@
 import React, {useCallback, useState, useRef} from 'react';
-import {ScrollView} from 'react-native';
+import {ScrollView, StyleSheet} from 'react-native';
 import {Box} from '@components';
 import {
   Categories,
@@ -8,21 +8,42 @@ import {
   RandomCocktails,
   RowButton,
   SearchInput,
+  Alcohol,
 } from './components';
 import {Colors, ESpacings} from '@constants';
-import {HomeScreenProps} from '@navigation';
+import {EScreens, HomeScreenProps} from '@navigation';
+import {EFilter} from '@data';
 
-export const HomeScreen: React.FC<HomeScreenProps> = () => {
+export const HomeScreen: React.FC<HomeScreenProps> = ({navigation}) => {
   const [searchText, setSearchText] = useState('');
-  const [isLettersBoxOpen, setIsLettersBoxOpen] = useState<boolean>(false);
+  const textRef = useRef<string>();
+  textRef.current = searchText;
   const scrollViewRef = useRef<ScrollView>(null);
 
-  const handleFindByLetterPress = useCallback(() => {
-    setIsLettersBoxOpen((prev) => !prev);
+  const handleScrollToEnd = useCallback(() => {
     setTimeout(() => {
       scrollViewRef.current?.scrollToEnd({duration: 500});
     }, 0);
-  }, []);
+  }, [scrollViewRef.current]);
+
+  const handleGlassPress = useCallback(() => {
+    navigation.navigate(EScreens.GLASS_LIST_SCREEN)
+  }, [navigation]);
+
+  const handleMoreIngredientsPress = useCallback(() => {
+    navigation.navigate(EScreens.INGREDIENT_LIST_SCREEN)
+  }, [navigation]);
+
+  const handleSearchSubmit = useCallback(() => {
+    if (!textRef.current) {
+      return;
+    }
+
+    navigation.navigate(EScreens.COCKTAIL_LIST_SCREEN, {
+      filter: EFilter.NAME,
+      queryString: textRef.current,
+    })
+  }, [navigation, textRef]);
 
   return (
     <Box
@@ -31,36 +52,29 @@ export const HomeScreen: React.FC<HomeScreenProps> = () => {
       <SearchInput
         text={searchText}
         onTextChange={setSearchText}
-        onSubmit={() => {console.log('search text is', searchText)}}
+        onSubmit={handleSearchSubmit}
       />
       <ScrollView
         showsVerticalScrollIndicator={false}
+        contentContainerStyle={styles.container}
         ref={scrollViewRef}>
         <RandomCocktails />
-        <Ingredients />
+        <Ingredients onMorePress={handleMoreIngredientsPress} />
         <Categories />
         <RowButton
+          border
           name="Glass"
-          onPress={() => {console.log('find by glass pressed')}}
+          onPress={handleGlassPress}
           />
-        <RowButton
-          name="Alcohol"
-          onPress={() => {console.log('find all alcohol cocktails pressed')}}
-        />
-        <RowButton
-          name="No alcohol"
-          onPress={() => {console.log('find all non-alcohol cocktails pressed')}}
-        />
-        <Box marginBottom={ESpacings.s32}>
-          <RowButton
-            name="Find by letter"
-            icon={isLettersBoxOpen ? 'up-square-o' : 'down-square-o'}
-            onPress={handleFindByLetterPress}
-            isBorderHidden
-          />
-          {isLettersBoxOpen && <LetterSearch />}
-        </Box>
+        <Alcohol afterToggle={handleScrollToEnd} />
+        <LetterSearch afterToggle={handleScrollToEnd} />
       </ScrollView>
     </Box>
   )
 };
+
+const styles = StyleSheet.create({
+  container: {
+    paddingBottom: ESpacings.s32,
+  },
+});

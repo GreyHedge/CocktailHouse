@@ -5,7 +5,11 @@ import {Box, IngredientCard, RectButton, Typography} from '@components';
 import {Colors, ERounding, ESpacings} from '@constants';
 import {IIngredient, mapIngredients} from '@data';
 
-export const Ingredients: React.FC = () => {
+interface IProps {
+  onMorePress: () => void;
+}
+
+export const Ingredients: React.FC<IProps> = ({onMorePress}) => {
   const [ingredients, setIngredients] = useState<IIngredient[] | null>(null);
 
   useEffect(() => {
@@ -42,7 +46,7 @@ export const Ingredients: React.FC = () => {
           border
           text="See more"
           icon="doubleright"
-          onPress={() => {console.log('see more pressed')}}
+          onPress={onMorePress}
         />
       </Box>
       <ScrollView

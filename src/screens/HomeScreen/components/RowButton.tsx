@@ -8,14 +8,14 @@ interface IProps {
   name: string;
   onPress: () => void;
   icon?: string;
-  isBorderHidden?: boolean;
+  border?: boolean;
 }
 
 export const RowButton: React.FC<IProps> =({
   name,
   onPress,
   icon = 'rightsquareo',
-  isBorderHidden,
+  border,
 }) => {
   return (
     <Button onPress={onPress}>
@@ -25,7 +25,7 @@ export const RowButton: React.FC<IProps> =({
         paddingVertical={ESpacings.s16}
         paddingRight={ESpacings.s16}
         marginLeft={ESpacings.s16}
-        style={isBorderHidden ? null : styles.container}>
+        style={border ? styles.container : null}>
         <Typography headLine>
           {name}
         </Typography>

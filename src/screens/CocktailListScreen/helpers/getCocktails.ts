@@ -6,6 +6,7 @@ import {
   cocktailsByIngredient,
   cocktailsByLetter,
   cocktailsByName,
+  cocktailsByAlcohol,
 } from '@constants';
 import {EFilter, ICocktailDetailResponse} from '@data';
 
@@ -33,6 +34,12 @@ export const getCocktailsByIngredient = (ingredient: string): AxiosPromise<IResp
   return axios.get(`${baseUrl}${cocktailsByIngredient}${ingredient}`);
 };
 
+export const getAlcoholCocktails = (
+  alcoholFilter: EFilter.ALCOHOLIC | EFilter.NON_ALCOHOLIC | EFilter.OPTIONAL_ALCOHOL,
+): AxiosPromise<IResponsePromise> => {
+  return axios.get(`${baseUrl}${cocktailsByAlcohol}${alcoholFilter}`);
+};
+
 export const getCocktails = (filterType: EFilter, queryString: string): AxiosPromise<IResponsePromise> | Error => {
   switch (filterType) {
     case EFilter.LETTER:
@@ -45,6 +52,10 @@ export const getCocktails = (filterType: EFilter, queryString: string): AxiosPro
       return getCocktailsByGlass(queryString);
     case EFilter.INGREDIENT:
       return getCocktailsByIngredient(queryString);
+    case EFilter.ALCOHOLIC:
+    case EFilter.NON_ALCOHOLIC:
+    case EFilter.OPTIONAL_ALCOHOL:
+      return getAlcoholCocktails(filterType);
     default:
       throw 'no such filter';
   }

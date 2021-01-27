@@ -1,4 +1,4 @@
-import React, {useCallback, useEffect, useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {ScrollView} from 'react-native'
 import axios from 'axios';
 import {Box} from '@components';
@@ -8,14 +8,10 @@ import {Colors} from '@constants';
 import {CocktailScreenProps} from '@navigation';
 
 export const CocktailScreen: React.FC<CocktailScreenProps> = ({
-  navigation,
   route,
 }) => {
   const {params: {id}} = route;
   const [cocktail, setCocktail] = useState<ICocktailDetail | null>(null);
-  const handleClosePress = useCallback(() => {
-    navigation.goBack();
-  }, []);
 
   useEffect(() => {
     async function getCocktail(id: string) {
@@ -40,7 +36,7 @@ export const CocktailScreen: React.FC<CocktailScreenProps> = ({
     glass,
     instructions,
     img,
-    isAlcohol,
+    alcoholic,
     ingredients,
   } = cocktail;
 
@@ -52,7 +48,7 @@ export const CocktailScreen: React.FC<CocktailScreenProps> = ({
           img={{uri: img}}
           iba={iba}
           category={category}
-          isAlcohol={isAlcohol}
+          alcoholic={alcoholic}
           glass={glass}
         />
         <Ingredients ingredients={ingredients} />
@@ -61,7 +57,7 @@ export const CocktailScreen: React.FC<CocktailScreenProps> = ({
           glass={glass}
         />
       </ScrollView>
-      <Menu onClosePress={handleClosePress}/>
+      <Menu />
     </Box>
   )
 };

@@ -1,11 +1,11 @@
 import React, {useEffect, useState} from 'react';
 import {FlatList, ListRenderItemInfo, StyleSheet} from 'react-native';
+import {AxiosResponse} from 'axios';
 import {Box, CocktailCard, SmallMenu, Typography} from '@components';
 import {EFilter, ICocktail, ICocktailDetailResponse, mapCocktailList} from '@data';
 import {roundButtonsWidth, Colors, ESpacings} from '@constants';
 import {CocktailListScreenProps} from '@navigation';
 import {getCocktails} from './helpers';
-import {AxiosResponse} from "axios";
 
 const handleRenderItem = (info: ListRenderItemInfo<ICocktail>) => {
   return (
@@ -19,7 +19,7 @@ const handleRenderItem = (info: ListRenderItemInfo<ICocktail>) => {
 export const CocktailListScreen: React.FC<CocktailListScreenProps> = ({
   route,
 }) => {
-  const {params: {title, queryString, filter}} = route;
+  const {params: {title = '', queryString, filter}} = route;
   const [cocktailList, setCocktailList] = useState<ICocktail[] | null>(null);
 
   useEffect(() => {
@@ -42,23 +42,21 @@ export const CocktailListScreen: React.FC<CocktailListScreenProps> = ({
     <Box
       backgroundColor={Colors.dark}
       flex={1}>
-      {!!title && (
-        <Typography
-          title
-          color={Colors.ice}
-          marginVertical={ESpacings.s16}
-          marginLeft={ESpacings.s16}
-          marginRight={roundButtonsWidth + ESpacings.s16}>
-          {title}
-        </Typography>
-      )}
+      <Typography
+        title
+        color={Colors.ice}
+        marginVertical={ESpacings.s16}
+        marginLeft={ESpacings.s16}
+        marginRight={roundButtonsWidth + ESpacings.s16}>
+        {title}
+      </Typography>
       <FlatList
         data={cocktailList}
         renderItem={handleRenderItem}
         showsVerticalScrollIndicator={false}
         contentContainerStyle={styles.container}
       />
-      <SmallMenu onPress={() => {console.log('close pressed')}}/>
+      <SmallMenu />
     </Box>
   )
 };

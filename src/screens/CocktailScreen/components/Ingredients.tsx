@@ -1,23 +1,16 @@
 import React, {useCallback} from 'react';
 import {StyleSheet} from 'react-native';
-import {useNavigation} from '@react-navigation/native';
 import {Ingredient} from './Ingredient'
 import {Box, Typography} from '@components';
 import {Colors, ERounding, ESpacings} from '@constants';
 import {ICocktailIngredient} from '@data';
 import {commonStyles} from '@helpers';
-import {EScreens} from "@navigation";
 
 interface IProps {
   ingredients: ICocktailIngredient[];
 }
 
 export const Ingredients: React.FC<IProps> = ({ingredients}) => {
-  const {navigate} = useNavigation();
-  const handleIngredientPress = useCallback((name: string) => {
-    navigate(EScreens.INGREDIENT_SCREEN, {name})
-  }, []);
-
   return (
     <Box
       alignItems="flex-end"
@@ -45,7 +38,6 @@ export const Ingredients: React.FC<IProps> = ({ingredients}) => {
               img={{uri: `https://www.thecocktaildb.com/images/ingredients/${name}-Small.png`}}
               dose={value}
               isLast={ingredients.length - 1 === index}
-              onPress={handleIngredientPress}
             />
           )
         })}

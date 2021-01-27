@@ -1,27 +1,20 @@
 import React from 'react';
-import {StyleSheet} from 'react-native';
-import {Box} from '@components';
+import {AccordionButton} from './AccordionButton';
 import {Letter} from './Letter';
-import {alphabet, Colors, ERounding} from '@constants';
+import {alphabet} from '@constants';
 
-export const LetterSearch: React.FC = () => {
+interface IProps {
+  afterToggle: () => void;
+}
+
+export const LetterSearch: React.FC<IProps> = ({afterToggle}) => {
   return (
-    <Box
-      row
-      justifyContent="center"
-      backgroundColor={Colors.dark}
-      borderBottomRightRadius={ERounding.r24}
-      borderBottomLeftRadius={ERounding.r24}
-      style={styles.alphabetContainer}>
+    <AccordionButton
+      title="Find by letter"
+      afterToggle={afterToggle}>
       {alphabet.map((letter) => {
         return <Letter key={letter} letter={letter} />
       })}
-    </Box>
+    </AccordionButton>
   )
 };
-
-const styles = StyleSheet.create({
-  alphabetContainer: {
-    flexWrap: 'wrap',
-  },
-});

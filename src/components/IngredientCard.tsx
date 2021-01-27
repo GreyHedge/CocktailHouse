@@ -11,10 +11,14 @@ import {EScreens} from '@navigation';
 
 interface IProps {
   ingredient: IIngredient;
+  marginBottom?: number;
+  width?: number;
 }
 
 export const IngredientCard: React.FC<IProps> = ({
   ingredient,
+  marginBottom = ESpacings.s0,
+  width,
 }) => {
   const {name} = ingredient;
   const {navigate} = useNavigation();
@@ -28,7 +32,10 @@ export const IngredientCard: React.FC<IProps> = ({
   }, [name]);
 
   return (
-    <Box borderRadius={ERounding.r8} style={commonStyles.shadowRight}>
+    <Box
+      borderRadius={ERounding.r8}
+      marginBottom={marginBottom}
+      style={commonStyles.shadowRight}>
       <Box
         flex={1}
         marginRight={ESpacings.s8}
@@ -36,7 +43,7 @@ export const IngredientCard: React.FC<IProps> = ({
         style={commonStyles.noOverflow}>
         <Button
           onPress={handlePress}
-          style={styles.button}>
+          style={[styles.button, {width}]}>
           <Box paddingVertical={ESpacings.s8}>
             <Image
               source={{uri: `https://www.thecocktaildb.com/images/ingredients/${name}-Small.png`}}
@@ -60,6 +67,7 @@ export const IngredientCard: React.FC<IProps> = ({
 const styles = StyleSheet.create({
   button: {
     backgroundColor: Colors.ice,
+    flex: 1,
   },
   img: {
     height: ImageSize.S,
