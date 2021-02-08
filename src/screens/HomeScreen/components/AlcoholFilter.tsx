@@ -24,7 +24,6 @@ export const AlcoholFilter:React.FC<IProps> = ({filter}) => {
   return (
     <RectButton
       border
-      key={name}
       text={name}
       bigText
       textColor={Colors.ice}

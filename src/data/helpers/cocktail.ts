@@ -3,9 +3,11 @@ import {
   ICocktailResponse,
   ICocktailDetail,
   ICocktailDetailResponse,
+  IMapFn,
+  IMapArrayFn,
 } from '../types';
 
-export const mapCocktailDetails = (resp: ICocktailDetailResponse): ICocktailDetail => {
+export const mapCocktailDetails: IMapFn<ICocktailDetail,ICocktailDetailResponse> = (resp) => {
   const {
     strCategory: category,
     strIBA: iba,
@@ -36,7 +38,7 @@ export const mapCocktailDetails = (resp: ICocktailDetailResponse): ICocktailDeta
   };
 };
 
-export const mapCocktail = (resp: ICocktailResponse): ICocktail => {
+export const mapCocktail: IMapFn<ICocktail, ICocktailResponse> = (resp) => {
   const {
     idDrink: id,
     strDrink: name,
@@ -50,6 +52,6 @@ export const mapCocktail = (resp: ICocktailResponse): ICocktail => {
   }
 };
 
-export const mapCocktailList = (resp: ICocktailResponse[]): ICocktail[] => {
+export const mapCocktailList: IMapArrayFn<ICocktail, ICocktailResponse> = (resp) => {
   return resp.map((item ) => mapCocktail(item));
 };

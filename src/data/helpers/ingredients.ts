@@ -3,9 +3,13 @@ import {
   IIngredient,
   IIngredientDetailResponse,
   IIngredientResponse,
+  IMapFn,
+  IMapArrayFn,
 } from '../types';
 
-export const mapIngredientDetail = (resp: IIngredientDetailResponse): IIngredientDetail => {
+export const mapIngredientDetail: IMapFn<IIngredientDetail, IIngredientDetailResponse> = (
+  resp,
+) => {
   const {
     idIngredient: id,
     strIngredient: name,
@@ -25,10 +29,10 @@ export const mapIngredientDetail = (resp: IIngredientDetailResponse): IIngredien
   }
 };
 
-export const mapIngredient = (resp: IIngredientResponse): IIngredient => ({
+export const mapIngredient: IMapFn<IIngredient, IIngredientResponse> = (resp) => ({
   name: resp.strIngredient1,
 });
 
-export const mapIngredients = (resp: IIngredientResponse[]): IIngredient[] => {
+export const mapIngredients: IMapArrayFn<IIngredient, IIngredientResponse> = (resp) => {
   return resp.map(mapIngredient);
 };

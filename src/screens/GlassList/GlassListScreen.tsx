@@ -1,26 +1,14 @@
-import React, {useEffect, useState} from 'react';
+import React from 'react';
 import {StyleSheet, ScrollView} from 'react-native';
-import axios from 'axios';
-import {Header, Glass} from './conponents';
+import {Header, Glass} from './components';
 import {Box, SmallMenu} from '@components';
 import {GlassListScreenProps} from '@navigation';
-import {Colors, ESpacings, roundButtonsWidth} from '@constants';
-import {IGlass, mapGlassList} from '@data';
+import {allGlasses, Colors, ESpacings, roundButtonsWidth} from '@constants';
+import {IGlass, IGlassResponse, mapGlassList} from '@data';
+import {useGetArrayData} from '../../hooks';
 
 export const GlassListScreen: React.FC<GlassListScreenProps> = () => {
-  const [glassList, setGlassList] = useState<IGlass[] | null>(null);
-
-  useEffect(() => {
-    async function getGlassList() {
-      try {
-        const response = await axios.get('https://www.thecocktaildb.com/api/json/v1/1/list.php?g=list');
-        setGlassList(mapGlassList(response.data.drinks));
-      } catch (error) {
-        console.error(error);
-      }
-    }
-    getGlassList();
-  }, []);
+  const glassList = useGetArrayData<IGlass, IGlassResponse>(allGlasses, mapGlassList);
 
   if (!glassList) {
     return null;

@@ -10,3 +10,5 @@ export const cocktailsByName = 'search.php?s=';
 export const cocktailsByIngredient = 'filter.php?i=';
 export const cocktailsByGlass = 'filter.php?g=';
 export const cocktailsByAlcohol = 'filter.php?a=';
+export const allAlcoholFilters = 'list.php?a=list';
+export const allGlasses = 'list.php?g=list';

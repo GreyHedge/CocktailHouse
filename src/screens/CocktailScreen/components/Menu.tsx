@@ -2,11 +2,7 @@ import React, {useCallback} from 'react';
 import {useNavigation} from '@react-navigation/native';
 import {ButtonsMenuBlock, RoundButton} from '@components';
 
-interface IProps {
-
-}
-
-export const Menu: React.FC<IProps> = () => {
+export const Menu: React.FC = () => {
   const {goBack, popToTop} = useNavigation();
 
   const handleClosePress = useCallback(() => {
@@ -15,7 +11,7 @@ export const Menu: React.FC<IProps> = () => {
 
   const handleHomePress = useCallback(() => {
     popToTop();
-  }, [])
+  }, []);
 
   return (
     <ButtonsMenuBlock>

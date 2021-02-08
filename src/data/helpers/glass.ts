@@ -1,9 +1,14 @@
-import {IGlass, IGlassResponse} from '@data';
+import {
+  IGlass,
+  IGlassResponse,
+  IMapFn,
+  IMapArrayFn,
+} from '@data';
 
-export const mapGlass = (resp: IGlassResponse): IGlass => ({
+export const mapGlass: IMapFn<IGlass, IGlassResponse> = (resp) => ({
   glass: resp.strGlass,
 });
 
-export const mapGlassList = (resp: IGlassResponse[]): IGlass[] => {
+export const mapGlassList: IMapArrayFn<IGlass, IGlassResponse> = (resp) => {
   return resp.map((item ) => mapGlass(item));
 };

@@ -1,25 +1,16 @@
-import React, {useEffect, useState} from 'react';
-import axios from 'axios';
+import React from 'react';
+import {StyleSheet} from 'react-native';
 import {Box, Typography} from '@components';
 import {Category} from './Category';
-import {Colors, ESpacings} from '@constants';
-import {ICategory, mapCategoryList} from '@data';
-import {StyleSheet} from "react-native";
+import {allCategories, Colors, ESpacings} from '@constants';
+import {ICategory, ICategoryResponse, mapCategoryList} from '@data';
+import {useGetArrayData} from '../../../hooks';
 
 export const Categories: React.FC = () => {
-  const [categories, setCategories] = useState<ICategory[] | null>(null);
-
-  useEffect(() => {
-    async function getCategories() {
-      try {
-        const response = await axios.get('https://www.thecocktaildb.com/api/json/v1/1/list.php?c=list');
-        setCategories(mapCategoryList(response.data.drinks));
-      } catch (error) {
-        console.error(error);
-      }
-    }
-    getCategories();
-  }, []);
+  const categories: ICategory[] | null = useGetArrayData<ICategory, ICategoryResponse>(
+    allCategories,
+    mapCategoryList,
+  );
 
   if (!categories) {
     return null;

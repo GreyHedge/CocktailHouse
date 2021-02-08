@@ -1,29 +1,21 @@
-import React, {useEffect, useState} from 'react';
+import React from 'react';
 import {ScrollView} from 'react-native'
-import axios from 'axios';
 import {Box} from '@components';
 import {Menu, Info, Ingredients, Instructions} from './components';
-import {mapCocktailDetails, ICocktailDetail} from '@data';
-import {Colors} from '@constants';
+import {mapCocktailDetails, ICocktailDetail, ICocktailDetailResponse} from '@data';
+import {cocktailDetail, Colors} from '@constants';
 import {CocktailScreenProps} from '@navigation';
+import {useGetData} from '../../hooks';
 
 export const CocktailScreen: React.FC<CocktailScreenProps> = ({
   route,
 }) => {
   const {params: {id}} = route;
-  const [cocktail, setCocktail] = useState<ICocktailDetail | null>(null);
-
-  useEffect(() => {
-    async function getCocktail(id: string) {
-      try {
-        const response = await axios.get(`https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${id}`);
-        setCocktail(mapCocktailDetails(response.data.drinks[0]));
-      } catch (error) {
-        console.error(error);
-      }
-    }
-    getCocktail(id);
-  }, []);
+  const cocktail = useGetData<ICocktailDetail, ICocktailDetailResponse>(
+    `${cocktailDetail}${id}`,
+    mapCocktailDetails,
+    'drinks',
+  );
 
   if (!cocktail) {
     return null;

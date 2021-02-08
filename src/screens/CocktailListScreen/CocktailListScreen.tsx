@@ -1,11 +1,11 @@
-import React, {useEffect, useState} from 'react';
+import React from 'react';
 import {FlatList, ListRenderItemInfo, StyleSheet} from 'react-native';
-import {AxiosResponse} from 'axios';
 import {Box, CocktailCard, SmallMenu, Typography} from '@components';
-import {EFilter, ICocktail, ICocktailDetailResponse, mapCocktailList} from '@data';
+import {ICocktail, ICocktailResponse, mapCocktailList} from '@data';
 import {roundButtonsWidth, Colors, ESpacings} from '@constants';
 import {CocktailListScreenProps} from '@navigation';
 import {getCocktails} from './helpers';
+import {useGetArrayData} from '../../hooks';
 
 const handleRenderItem = (info: ListRenderItemInfo<ICocktail>) => {
   return (
@@ -20,19 +20,10 @@ export const CocktailListScreen: React.FC<CocktailListScreenProps> = ({
   route,
 }) => {
   const {params: {title = '', queryString, filter}} = route;
-  const [cocktailList, setCocktailList] = useState<ICocktail[] | null>(null);
-
-  useEffect(() => {
-    async function getCocktailList(filter: EFilter, queryString: string) {
-      try {
-        const response: AxiosResponse<{drinks: ICocktailDetailResponse[]}> = await getCocktails(filter, queryString);
-        setCocktailList(mapCocktailList(response.data.drinks));
-      } catch (error) {
-        console.error(error);
-      }
-    }
-    getCocktailList(filter, queryString);
-  }, []);
+  const cocktailList = useGetArrayData<ICocktail, ICocktailResponse>(
+    getCocktails(filter, queryString),
+    mapCocktailList,
+  );
 
   if (!cocktailList) {
     return null;

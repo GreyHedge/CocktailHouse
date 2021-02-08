@@ -1,4 +1,3 @@
-import axios, {AxiosPromise} from 'axios';
 import {
   baseUrl,
   cocktailsByCategory,
@@ -8,39 +7,35 @@ import {
   cocktailsByName,
   cocktailsByAlcohol,
 } from '@constants';
-import {EFilter, ICocktailDetailResponse} from '@data';
+import {EFilter} from '@data';
 
-type IResponsePromise = {
-  drinks: ICocktailDetailResponse[]
-}
-
-export const getCocktailsByLetter = (letter: string): AxiosPromise<IResponsePromise> => {
-  return axios.get(`${baseUrl}${cocktailsByLetter}${letter}`);
+export const getCocktailsByLetter = (letter: string): string => {
+  return `${baseUrl}${cocktailsByLetter}${letter}`;
 };
 
-export const getCocktailsByName = (name: string): AxiosPromise<IResponsePromise> => {
-  return axios.get(`${baseUrl}${cocktailsByName}${name}`);
+export const getCocktailsByName = (name: string): string => {
+  return `${baseUrl}${cocktailsByName}${name}`;
 };
 
-export const getCocktailsByCategory = (category: string): AxiosPromise<IResponsePromise> => {
-  return axios.get(`${baseUrl}${cocktailsByCategory}${category}`);
+export const getCocktailsByCategory = (category: string): string => {
+  return `${baseUrl}${cocktailsByCategory}${category}`;
 };
 
-export const getCocktailsByGlass = (glass: string): AxiosPromise<IResponsePromise> => {
-  return axios.get(`${baseUrl}${cocktailsByGlass}${glass}`);
+export const getCocktailsByGlass = (glass: string): string => {
+  return `${baseUrl}${cocktailsByGlass}${glass}`;
 };
 
-export const getCocktailsByIngredient = (ingredient: string): AxiosPromise<IResponsePromise> => {
-  return axios.get(`${baseUrl}${cocktailsByIngredient}${ingredient}`);
+export const getCocktailsByIngredient = (ingredient: string): string => {
+  return `${baseUrl}${cocktailsByIngredient}${ingredient}`;
 };
 
 export const getAlcoholCocktails = (
   alcoholFilter: EFilter.ALCOHOLIC | EFilter.NON_ALCOHOLIC | EFilter.OPTIONAL_ALCOHOL,
-): AxiosPromise<IResponsePromise> => {
-  return axios.get(`${baseUrl}${cocktailsByAlcohol}${alcoholFilter}`);
+): string => {
+  return `${baseUrl}${cocktailsByAlcohol}${alcoholFilter}`;
 };
 
-export const getCocktails = (filterType: EFilter, queryString: string): AxiosPromise<IResponsePromise> | Error => {
+export const getCocktails = (filterType: EFilter, queryString: string): string | Error => {
   switch (filterType) {
     case EFilter.LETTER:
       return getCocktailsByLetter(queryString);

@@ -1,12 +1,12 @@
-import React, {useCallback, useEffect, useRef, useState} from 'react';
-import {FlatList, ListRenderItemInfo} from 'react-native';
-import axios from 'axios';
+import React, {useCallback, useRef} from 'react';
+import {FlatList, ListRenderItemInfo, StyleSheet} from 'react-native';
 import {IngredientListScreenProps} from '@navigation';
 import {Box, IngredientCard, SmallMenu, Typography} from '@components';
-import {Colors, ESpacings, roundButtonsWidth} from '@constants';
-import {IIngredient, mapIngredients} from '@data';
+import {UpButton} from './components';
+import {allIngredients, Colors, ESpacings, roundButtonsWidth} from '@constants';
+import {IIngredient, IIngredientResponse, mapIngredients} from '@data';
 import {width} from '@helpers';
-import {UpButton} from "./components";
+import {useGetArrayData} from '../../hooks';
 
 const cardWidth = (width - roundButtonsWidth - ESpacings.s16 * 2 - ESpacings.s8) / 2;
 
@@ -23,23 +23,11 @@ const renderIngredient = (info: ListRenderItemInfo<IIngredient>) => {
 const keyExtractor = (item: IIngredient) => item.name;
 
 export const IngredientListScreen: React.FC<IngredientListScreenProps> = () => {
-  const [ingredients, setIngredients] = useState<IIngredient[] | null>(null);
+  const ingredients = useGetArrayData<IIngredient, IIngredientResponse>(allIngredients, mapIngredients);
   const listRef = useRef<FlatList>(null);
 
   const handleUpPress = useCallback(() => {
     listRef.current?.scrollToOffset({offset: 0, animated: true})
-  }, []);
-
-  useEffect(() => {
-    async function getIngredients() {
-      try {
-        const response = await axios.get('https://www.thecocktaildb.com/api/json/v1/1/list.php?i=list');
-        setIngredients(mapIngredients(response.data.drinks));
-      } catch (error) {
-        console.error(error);
-      }
-    }
-    getIngredients();
   }, []);
 
   if (!ingredients) {
@@ -64,10 +52,18 @@ export const IngredientListScreen: React.FC<IngredientListScreenProps> = () => {
         renderItem={renderIngredient}
         numColumns={2}
         showsVerticalScrollIndicator={false}
-        contentContainerStyle={{marginLeft: ESpacings.s16, marginRight: ESpacings.s16 + roundButtonsWidth, paddingBottom: ESpacings.s32}}
+        contentContainerStyle={styles.container}
       />
       <SmallMenu />
       <UpButton onPress={handleUpPress}/>
     </Box>
   )
 };
+
+const styles = StyleSheet.create({
+  container: {
+    marginLeft: ESpacings.s16,
+    marginRight: ESpacings.s16 + roundButtonsWidth,
+    paddingBottom: ESpacings.s32,
+  },
+});

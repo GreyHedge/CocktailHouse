@@ -1,28 +1,18 @@
-import React, {useEffect, useState} from 'react';
+import React from 'react';
 import {ScrollView, StyleSheet} from 'react-native';
-import axios from 'axios';
 import {Box, IngredientCard, RectButton, Typography} from '@components';
-import {Colors, ERounding, ESpacings} from '@constants';
-import {IIngredient, mapIngredients} from '@data';
+import {allIngredients, Colors, ERounding, ESpacings} from '@constants';
+import {IIngredient, IIngredientResponse, mapIngredients} from '@data';
+import {useGetArrayData} from '../../../hooks';
+
+const numberOfIngredients = 5;
 
 interface IProps {
   onMorePress: () => void;
 }
 
 export const Ingredients: React.FC<IProps> = ({onMorePress}) => {
-  const [ingredients, setIngredients] = useState<IIngredient[] | null>(null);
-
-  useEffect(() => {
-    async function getIngredients() {
-      try {
-        const response = await axios.get('https://www.thecocktaildb.com/api/json/v1/1/list.php?i=list');
-        setIngredients(mapIngredients(response.data.drinks));
-      } catch (error) {
-        console.error(error);
-      }
-    }
-    getIngredients();
-  }, []);
+  const ingredients = useGetArrayData<IIngredient, IIngredientResponse>(allIngredients, mapIngredients);
 
   if (!ingredients) {
     return null;
@@ -53,7 +43,7 @@ export const Ingredients: React.FC<IProps> = ({onMorePress}) => {
         contentContainerStyle={styles.container}
         horizontal
         showsHorizontalScrollIndicator={false}>
-        {ingredients.slice(0, 5).map((ingredient) => (
+        {ingredients.slice(0, numberOfIngredients).map((ingredient) => (
           <IngredientCard
             key={ingredient.name}
             ingredient={ingredient}

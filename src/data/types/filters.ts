@@ -14,7 +14,7 @@ export interface IAlcoholFiltersResponse {
 }
 
 export interface IAlcoholFilter {
-  name: IAlcoholFilter;
+  name: string;
 }
 
 export type IAlcoholCategory = EFilter.ALCOHOLIC | EFilter.NON_ALCOHOLIC | EFilter.OPTIONAL_ALCOHOL;

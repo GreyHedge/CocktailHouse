@@ -29,7 +29,6 @@ export const Glass: React.FC<IProps> = ({
   return (
     <RectButton
       border
-      key={glass}
       text={glass}
       bigText
       textColor={Colors.ice}

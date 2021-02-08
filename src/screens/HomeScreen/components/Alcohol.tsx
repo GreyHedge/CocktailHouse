@@ -1,29 +1,24 @@
-import React, {useEffect, useState} from 'react';
-import axios from 'axios';
+import React from 'react';
 import {AccordionButton} from './AccordionButton';
 import {AlcoholFilter} from './AlcoholFilter';
 import {Box} from '@components';
-import {IAlcoholFilter, mapAlcoholFilters} from '@data';
-import {ESpacings} from '@constants';
+import {IAlcoholFilter, IAlcoholFiltersResponse, mapAlcoholFilters} from '@data';
+import {allAlcoholFilters, ESpacings} from '@constants';
+import {useGetArrayData} from '../../../hooks';
 
 interface IProps {
   afterToggle: () => void;
 }
 
 export const Alcohol:React.FC<IProps> = ({afterToggle}) => {
-  const [alcoholFilters, setAlcoholFilters] = useState<IAlcoholFilter[]>([]);
+  const alcoholFilters: null | IAlcoholFilter[] = useGetArrayData<IAlcoholFilter, IAlcoholFiltersResponse>(
+    allAlcoholFilters,
+    mapAlcoholFilters,
+  );
 
-  useEffect(() => {
-    async function getAlcoholFilters() {
-      try {
-        const response = await axios.get(`https://www.thecocktaildb.com/api/json/v1/1/list.php?a=list`);
-        setAlcoholFilters(mapAlcoholFilters(response.data.drinks));
-      } catch (error) {
-        console.error(error);
-      }
-    }
-    getAlcoholFilters();
-  }, []);
+  if (!alcoholFilters) {
+    return null;
+  }
 
   return (
     <AccordionButton
