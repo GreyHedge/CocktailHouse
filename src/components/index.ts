@@ -7,3 +7,6 @@ export * from './SmallMenu';
 export * from './CocktailCard';
 export * from './IngredientCard';
 export * from './RectButton';
+export * from './Loader';
+export * from './UpButton';
+export * from './EmptyList';

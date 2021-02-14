@@ -24,6 +24,7 @@ module.exports = {
           ['@screens', './src/screens/index.ts'],
           ['@navigation', './src/navigation/index.ts'],
           ['@data', './src/data/index.ts'],
+          ['@hooks', './src/hooks/index.ts'],
         ],
         extensions: ['.ts', '.tsx', '.js', '.jsx', '.json'],
       },

@@ -72,6 +72,9 @@
       ],
       "@data": [
         "src/data/index.ts"
+      ],
+      "@hooks": [
+        "src/hooks/index.ts"
       ]
     }
   },

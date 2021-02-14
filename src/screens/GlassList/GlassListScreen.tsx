@@ -1,14 +1,24 @@
-import React from 'react';
-import {StyleSheet, ScrollView} from 'react-native';
+import React, {useCallback, useRef} from 'react';
+import {StyleSheet, ScrollView,} from 'react-native';
 import {Header, Glass} from './components';
-import {Box, SmallMenu} from '@components';
+import {Box, SmallMenu, Loader, UpButton} from '@components';
 import {GlassListScreenProps} from '@navigation';
-import {allGlasses, Colors, ESpacings, roundButtonsWidth} from '@constants';
+import {allGlasses, Colors, ESpacings, roundButtonsWidth, EQueryKeys} from '@constants';
 import {IGlass, IGlassResponse, mapGlassList} from '@data';
-import {useGetArrayData} from '../../hooks';
+import {useGetArrayData} from '@hooks';
 
 export const GlassListScreen: React.FC<GlassListScreenProps> = () => {
-  const glassList = useGetArrayData<IGlass, IGlassResponse>(allGlasses, mapGlassList);
+  const {data: glassList, isLoading} = useGetArrayData<IGlass, IGlassResponse>(
+    EQueryKeys.ALL_GLASSES,
+    allGlasses,
+    mapGlassList,
+    true,
+  );
+  const listRef = useRef<ScrollView>(null);
+
+  const handleUpPress = useCallback(() => {
+    listRef.current?.scrollTo();
+  }, []);
 
   if (!glassList) {
     return null;
@@ -18,8 +28,12 @@ export const GlassListScreen: React.FC<GlassListScreenProps> = () => {
     <Box
       backgroundColor={Colors.dark}
       flex={1}>
+      {isLoading && (
+        <Loader color={Colors.ice} />
+      )}
       <Header />
       <ScrollView
+        ref={listRef}
         showsVerticalScrollIndicator={false}
         contentContainerStyle={styles.container}>
         {glassList.map(({glass}) => {
@@ -32,6 +46,7 @@ export const GlassListScreen: React.FC<GlassListScreenProps> = () => {
         })}
       </ScrollView>
       <SmallMenu />
+      <UpButton onPress={handleUpPress} />
     </Box>
   );
 };

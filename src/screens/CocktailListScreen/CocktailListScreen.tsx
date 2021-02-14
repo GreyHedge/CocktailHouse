@@ -1,11 +1,13 @@
-import React from 'react';
+import React, {useCallback, useRef} from 'react';
 import {FlatList, ListRenderItemInfo, StyleSheet} from 'react-native';
-import {Box, CocktailCard, SmallMenu, Typography} from '@components';
+import {Box, CocktailCard, SmallMenu, Typography, Loader, UpButton, EmptyList} from '@components';
 import {ICocktail, ICocktailResponse, mapCocktailList} from '@data';
-import {roundButtonsWidth, Colors, ESpacings} from '@constants';
+import {roundButtonsWidth, Colors, ESpacings, EQueryKeys} from '@constants';
 import {CocktailListScreenProps} from '@navigation';
 import {getCocktails} from './helpers';
-import {useGetArrayData} from '../../hooks';
+import {useGetArrayData} from '@hooks';
+
+const minCocktailsNumber = 5;
 
 const handleRenderItem = (info: ListRenderItemInfo<ICocktail>) => {
   return (
@@ -20,34 +22,49 @@ export const CocktailListScreen: React.FC<CocktailListScreenProps> = ({
   route,
 }) => {
   const {params: {title = '', queryString, filter}} = route;
-  const cocktailList = useGetArrayData<ICocktail, ICocktailResponse>(
+  const {data: cocktailList, isLoading} = useGetArrayData<ICocktail, ICocktailResponse>(
+    `${EQueryKeys.COCKTAIL_LIST} ${filter} ${queryString}`,
     getCocktails(filter, queryString),
     mapCocktailList,
+    true,
   );
+  const listRef = useRef<FlatList>(null);
 
-  if (!cocktailList) {
-    return null;
-  }
+  const handleUpPress = useCallback(() => {
+    listRef.current?.scrollToOffset({offset: 0, animated: true})
+  }, []);
 
   return (
     <Box
       backgroundColor={Colors.dark}
       flex={1}>
-      <Typography
-        title
-        color={Colors.ice}
-        marginVertical={ESpacings.s16}
-        marginLeft={ESpacings.s16}
-        marginRight={roundButtonsWidth + ESpacings.s16}>
-        {title}
-      </Typography>
-      <FlatList
-        data={cocktailList}
-        renderItem={handleRenderItem}
-        showsVerticalScrollIndicator={false}
-        contentContainerStyle={styles.container}
-      />
+      {isLoading && (
+        <Loader color={Colors.ice} />
+      )}
+      {!!cocktailList && (
+        <>
+          <Typography
+            title
+            color={Colors.ice}
+            marginVertical={ESpacings.s16}
+            marginLeft={ESpacings.s16}
+            marginRight={roundButtonsWidth + ESpacings.s16}>
+            {title}
+          </Typography>
+          <FlatList
+            ref={listRef}
+            data={cocktailList}
+            renderItem={handleRenderItem}
+            showsVerticalScrollIndicator={false}
+            contentContainerStyle={styles.container}
+            ListEmptyComponent={EmptyList}
+          />
+        </>
+      )}
       <SmallMenu />
+      {!!cocktailList && cocktailList.length > minCocktailsNumber && (
+        <UpButton onPress={handleUpPress} />
+      )}
     </Box>
   )
 };

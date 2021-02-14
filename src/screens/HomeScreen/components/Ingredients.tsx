@@ -1,9 +1,9 @@
 import React from 'react';
 import {ScrollView, StyleSheet} from 'react-native';
 import {Box, IngredientCard, RectButton, Typography} from '@components';
-import {allIngredients, Colors, ERounding, ESpacings} from '@constants';
+import {allIngredients, Colors, EQueryKeys, ERounding, ESpacings} from '@constants';
 import {IIngredient, IIngredientResponse, mapIngredients} from '@data';
-import {useGetArrayData} from '../../../hooks';
+import {useGetArrayData} from '@hooks';
 
 const numberOfIngredients = 5;
 
@@ -12,7 +12,12 @@ interface IProps {
 }
 
 export const Ingredients: React.FC<IProps> = ({onMorePress}) => {
-  const ingredients = useGetArrayData<IIngredient, IIngredientResponse>(allIngredients, mapIngredients);
+  const {data: ingredients} = useGetArrayData<IIngredient, IIngredientResponse>(
+    EQueryKeys.ALL_INGREDIENTS,
+    allIngredients,
+    mapIngredients,
+    true,
+  );
 
   if (!ingredients) {
     return null;

@@ -1,12 +1,11 @@
 import React, {useCallback, useRef} from 'react';
 import {FlatList, ListRenderItemInfo, StyleSheet} from 'react-native';
 import {IngredientListScreenProps} from '@navigation';
-import {Box, IngredientCard, SmallMenu, Typography} from '@components';
-import {UpButton} from './components';
-import {allIngredients, Colors, ESpacings, roundButtonsWidth} from '@constants';
+import {Box, IngredientCard, SmallMenu, Typography, Loader, UpButton} from '@components';
+import {allIngredients, Colors, ESpacings, roundButtonsWidth, EQueryKeys} from '@constants';
 import {IIngredient, IIngredientResponse, mapIngredients} from '@data';
 import {width} from '@helpers';
-import {useGetArrayData} from '../../hooks';
+import {useGetArrayData} from '@hooks';
 
 const cardWidth = (width - roundButtonsWidth - ESpacings.s16 * 2 - ESpacings.s8) / 2;
 
@@ -23,39 +22,47 @@ const renderIngredient = (info: ListRenderItemInfo<IIngredient>) => {
 const keyExtractor = (item: IIngredient) => item.name;
 
 export const IngredientListScreen: React.FC<IngredientListScreenProps> = () => {
-  const ingredients = useGetArrayData<IIngredient, IIngredientResponse>(allIngredients, mapIngredients);
+  const {data: ingredients, isLoading} = useGetArrayData<IIngredient, IIngredientResponse>(
+    EQueryKeys.ALL_INGREDIENTS,
+    allIngredients,
+    mapIngredients,
+    true,
+  );
   const listRef = useRef<FlatList>(null);
 
   const handleUpPress = useCallback(() => {
     listRef.current?.scrollToOffset({offset: 0, animated: true})
   }, []);
 
-  if (!ingredients) {
-    return null;
-  }
-
   return (
     <Box
       flex={1}
       backgroundColor={Colors.dark}>
-      <Typography
-        title
-        color={Colors.ice}
-        marginLeft={ESpacings.s16}
-        marginVertical={ESpacings.s16}>
-        Ingredients
-      </Typography>
-      <FlatList
-        ref={listRef}
-        data={ingredients}
-        keyExtractor={keyExtractor}
-        renderItem={renderIngredient}
-        numColumns={2}
-        showsVerticalScrollIndicator={false}
-        contentContainerStyle={styles.container}
-      />
+      {isLoading && (
+        <Loader color={Colors.ice} />
+      )}
+      {!!ingredients && (
+        <>
+          <Typography
+            title
+            color={Colors.ice}
+            marginLeft={ESpacings.s16}
+            marginVertical={ESpacings.s16}>
+            Ingredients
+          </Typography>
+          <FlatList
+            ref={listRef}
+            data={ingredients}
+            keyExtractor={keyExtractor}
+            renderItem={renderIngredient}
+            numColumns={2}
+            showsVerticalScrollIndicator={false}
+            contentContainerStyle={styles.container}
+          />
+        </>
+      )}
       <SmallMenu />
-      <UpButton onPress={handleUpPress}/>
+      <UpButton onPress={handleUpPress} />
     </Box>
   )
 };

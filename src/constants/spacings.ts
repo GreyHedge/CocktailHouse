@@ -23,13 +23,6 @@ export enum ERounding {
   r32 = 32,
 }
 
-export enum EShadow {
-  S = 2,
-  M = 4,
-  L = 6,
-  XL = 10,
-}
-
 export enum ImageSize {
   S = 100,
   M = 200,

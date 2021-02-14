@@ -2,12 +2,13 @@ import React from 'react';
 import {StyleSheet} from 'react-native';
 import {Box, Typography} from '@components';
 import {Category} from './Category';
-import {allCategories, Colors, ESpacings} from '@constants';
+import {allCategories, Colors, ESpacings, EQueryKeys} from '@constants';
 import {ICategory, ICategoryResponse, mapCategoryList} from '@data';
-import {useGetArrayData} from '../../../hooks';
+import {useGetArrayData} from '@hooks';
 
 export const Categories: React.FC = () => {
-  const categories: ICategory[] | null = useGetArrayData<ICategory, ICategoryResponse>(
+  const {data: categories} = useGetArrayData<ICategory, ICategoryResponse>(
+    EQueryKeys.ALL_CATEGORIES,
     allCategories,
     mapCategoryList,
   );

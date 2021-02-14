@@ -53,5 +53,8 @@ export const mapCocktail: IMapFn<ICocktail, ICocktailResponse> = (resp) => {
 };
 
 export const mapCocktailList: IMapArrayFn<ICocktail, ICocktailResponse> = (resp) => {
+  if (!resp) {
+    return [];
+  }
   return resp.map((item ) => mapCocktail(item));
 };
