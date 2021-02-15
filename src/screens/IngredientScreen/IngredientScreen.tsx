@@ -1,6 +1,6 @@
 import React from 'react';
 import {ScrollView} from 'react-native';
-import {Box, SmallMenu, Loader} from '@components';
+import {ScreenWrapper, Loader} from '@components';
 import {NameAndTags, Description} from './components';
 import {mapIngredientDetail, IIngredientDetail, IIngredientDetailResponse, EResponseField} from '@data';
 import {Colors, ingredientDetail, EQueryKeys} from '@constants';
@@ -19,9 +19,7 @@ export const IngredientScreen: React.FC<IngredientScreenProps> = ({
   );
 
   return (
-    <Box
-      backgroundColor={Colors.ice}
-      flex={1}>
+    <ScreenWrapper color={Colors.ice}>
       {isLoading && (
         <Loader color={Colors.dark} />
       )}
@@ -39,7 +37,6 @@ export const IngredientScreen: React.FC<IngredientScreenProps> = ({
           />
         </ScrollView>
       )}
-      <SmallMenu />
-    </Box>
+    </ScreenWrapper>
   )
 };

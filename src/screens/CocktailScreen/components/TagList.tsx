@@ -31,7 +31,7 @@ export const TagList: React.FC<IProps> = ({
       filter: EFilter.GLASS,
       queryString: glass,
       title: glass,
-    })
+    });
   }, [glass]);
 
   const handleAlcoholPress = useCallback(() => {
@@ -39,7 +39,7 @@ export const TagList: React.FC<IProps> = ({
       filter: alcoholic.toLowerCase(),
       queryString: alcoholic,
       title: `${alcoholic} cocktails`,
-    })
+    });
   }, [alcoholic]);
 
   return (

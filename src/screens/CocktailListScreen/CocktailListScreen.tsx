@@ -1,6 +1,13 @@
 import React, {useCallback, useRef} from 'react';
 import {FlatList, ListRenderItemInfo, StyleSheet} from 'react-native';
-import {Box, CocktailCard, SmallMenu, Typography, Loader, UpButton, EmptyList} from '@components';
+import {
+  ScreenWrapper,
+  CocktailCard,
+  Typography,
+  Loader,
+  UpButton,
+  EmptyList,
+} from '@components';
 import {ICocktail, ICocktailResponse, mapCocktailList} from '@data';
 import {roundButtonsWidth, Colors, ESpacings, EQueryKeys} from '@constants';
 import {CocktailListScreenProps} from '@navigation';
@@ -35,9 +42,7 @@ export const CocktailListScreen: React.FC<CocktailListScreenProps> = ({
   }, []);
 
   return (
-    <Box
-      backgroundColor={Colors.dark}
-      flex={1}>
+    <ScreenWrapper color={Colors.dark}>
       {isLoading && (
         <Loader color={Colors.ice} />
       )}
@@ -61,11 +66,10 @@ export const CocktailListScreen: React.FC<CocktailListScreenProps> = ({
           />
         </>
       )}
-      <SmallMenu />
       {!!cocktailList && cocktailList.length > minCocktailsNumber && (
         <UpButton onPress={handleUpPress} />
       )}
-    </Box>
+    </ScreenWrapper>
   )
 };
 

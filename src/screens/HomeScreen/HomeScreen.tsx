@@ -1,6 +1,6 @@
 import React, {useCallback, useState, useRef} from 'react';
 import {ScrollView, StyleSheet} from 'react-native';
-import {Box} from '@components';
+import {ScreenWrapper} from '@components';
 import {
   Categories,
   Ingredients,
@@ -46,9 +46,7 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({navigation}) => {
   }, [navigation, textRef]);
 
   return (
-    <Box
-      backgroundColor={Colors.blue}
-      flex={1}>
+    <ScreenWrapper color={Colors.blue} hideMenu>
       <SearchInput
         text={searchText}
         onTextChange={setSearchText}
@@ -65,11 +63,11 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({navigation}) => {
           border
           name="Glass"
           onPress={handleGlassPress}
-          />
+        />
         <Alcohol afterToggle={handleScrollToEnd} />
         <LetterSearch afterToggle={handleScrollToEnd} />
       </ScrollView>
-    </Box>
+    </ScreenWrapper>
   )
 };
 

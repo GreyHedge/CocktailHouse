@@ -1,7 +1,13 @@
 import React, {useCallback, useRef} from 'react';
 import {FlatList, ListRenderItemInfo, StyleSheet} from 'react-native';
 import {IngredientListScreenProps} from '@navigation';
-import {Box, IngredientCard, SmallMenu, Typography, Loader, UpButton} from '@components';
+import {
+  ScreenWrapper,
+  IngredientCard,
+  Typography,
+  Loader,
+  UpButton,
+} from '@components';
 import {allIngredients, Colors, ESpacings, roundButtonsWidth, EQueryKeys} from '@constants';
 import {IIngredient, IIngredientResponse, mapIngredients} from '@data';
 import {width} from '@helpers';
@@ -35,9 +41,7 @@ export const IngredientListScreen: React.FC<IngredientListScreenProps> = () => {
   }, []);
 
   return (
-    <Box
-      flex={1}
-      backgroundColor={Colors.dark}>
+    <ScreenWrapper color={Colors.dark}>
       {isLoading && (
         <Loader color={Colors.ice} />
       )}
@@ -61,9 +65,9 @@ export const IngredientListScreen: React.FC<IngredientListScreenProps> = () => {
           />
         </>
       )}
-      <SmallMenu />
       <UpButton onPress={handleUpPress} />
-    </Box>
+    </ScreenWrapper>
+
   )
 };
 

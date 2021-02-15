@@ -1,7 +1,7 @@
 import React from 'react';
 import {ScrollView} from 'react-native'
-import {Box, Loader} from '@components';
-import {Menu, Info, Ingredients, Instructions} from './components';
+import {Loader, ScreenWrapper} from '@components';
+import {Info, Ingredients, Instructions} from './components';
 import {mapCocktailDetails, ICocktailDetail, ICocktailDetailResponse, EResponseField} from '@data';
 import {cocktailDetail, Colors, EQueryKeys} from '@constants';
 import {CocktailScreenProps} from '@navigation';
@@ -19,7 +19,7 @@ export const CocktailScreen: React.FC<CocktailScreenProps> = ({
   );
 
   return (
-    <Box backgroundColor={Colors.pink} flex={1}>
+    <ScreenWrapper color={Colors.pink}>
       {isLoading && (
         <Loader color={Colors.dark} />
       )}
@@ -40,8 +40,7 @@ export const CocktailScreen: React.FC<CocktailScreenProps> = ({
           />
         </ScrollView>
       )}
-      <Menu />
-    </Box>
+    </ScreenWrapper>
   )
 };
 

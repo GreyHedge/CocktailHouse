@@ -1,7 +1,7 @@
 import React, {useCallback, useRef} from 'react';
 import {StyleSheet, ScrollView,} from 'react-native';
 import {Header, Glass} from './components';
-import {Box, SmallMenu, Loader, UpButton} from '@components';
+import {ScreenWrapper, Loader, UpButton} from '@components';
 import {GlassListScreenProps} from '@navigation';
 import {allGlasses, Colors, ESpacings, roundButtonsWidth, EQueryKeys} from '@constants';
 import {IGlass, IGlassResponse, mapGlassList} from '@data';
@@ -25,9 +25,7 @@ export const GlassListScreen: React.FC<GlassListScreenProps> = () => {
   }
 
   return (
-    <Box
-      backgroundColor={Colors.dark}
-      flex={1}>
+    <ScreenWrapper color={Colors.dark}>
       {isLoading && (
         <Loader color={Colors.ice} />
       )}
@@ -45,9 +43,8 @@ export const GlassListScreen: React.FC<GlassListScreenProps> = () => {
           )
         })}
       </ScrollView>
-      <SmallMenu />
       <UpButton onPress={handleUpPress} />
-    </Box>
+    </ScreenWrapper>
   );
 };
 
