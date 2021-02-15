@@ -2,6 +2,7 @@ import React, {useCallback, useState, useRef} from 'react';
 import {ScrollView, StyleSheet} from 'react-native';
 import {ScreenWrapper} from '@components';
 import {
+  Header,
   Categories,
   Ingredients,
   LetterSearch,
@@ -47,6 +48,7 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({navigation}) => {
 
   return (
     <ScreenWrapper color={Colors.blue} hideMenu>
+      <Header />
       <SearchInput
         text={searchText}
         onTextChange={setSearchText}

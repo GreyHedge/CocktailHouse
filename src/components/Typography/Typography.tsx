@@ -18,6 +18,7 @@ export interface ITypographyProps extends TextProps, IPaddings, IMargins {
   bold?: boolean;
   center?: boolean;
   right?: boolean;
+  merienda?: boolean;
 }
 
 export const Typography: React.FC<ITypographyProps> = ({

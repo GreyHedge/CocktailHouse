@@ -24,6 +24,7 @@ export const Ingredients: React.FC<IProps> = ({ingredients}) => {
         borderBottomLeftRadius={ERounding.r24}>
         <Typography
           h2
+          merienda
           center
           color={Colors.dark}
           marginVertical={ESpacings.s16}>

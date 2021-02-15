@@ -23,6 +23,7 @@ export const Instructions: React.FC<IProps> = ({instructions, glass}) => {
       borderBottomRightRadius={ERounding.r24}>
       <Typography
         h2
+        merienda
         center
         color={Colors.ice}
         marginVertical={ESpacings.s16}>
@@ -33,6 +34,7 @@ export const Instructions: React.FC<IProps> = ({instructions, glass}) => {
       </Typography>
       <Typography
         h2
+        merienda
         center
         color={Colors.ice}
         marginVertical={ESpacings.s16}>

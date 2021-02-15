@@ -1,5 +1,5 @@
 import {StyleSheet} from 'react-native';
-import {ITypographyProps} from './Typography';
+import {ITypographyProps} from '@components';
 import {getPaddings, getMargins} from '../helpers';
 
 export const getTextStyleAndRestProps = (props: Omit<ITypographyProps, 'children'>) => {
@@ -31,6 +31,7 @@ export const getTextStyleAndRestProps = (props: Omit<ITypographyProps, 'children
     marginVertical,
     center,
     right,
+    merienda,
     style,
     ...restProps
   } = props;
@@ -49,6 +50,7 @@ export const getTextStyleAndRestProps = (props: Omit<ITypographyProps, 'children
     caption ? styles.caption : null,
     semibold ? styles.semibold : null,
     bold ? styles.bold : null,
+    merienda ? styles.merienda : null,
     ...getPaddings({
       padding,
       paddingTop,
@@ -89,7 +91,7 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 32,
     lineHeight: 41,
-    fontFamily: 'Montserrat-Bold',
+    fontFamily: 'Merienda-Bold',
   },
   h1: {
     fontSize: 20,
@@ -132,4 +134,7 @@ const styles = StyleSheet.create({
   right: {
     textAlign: 'right',
   },
+  merienda: {
+    fontFamily: 'Merienda-Bold',
+  }
 });

@@ -5,3 +5,4 @@ export * from './Ingredients';
 export * from './Categories';
 export * from './RowButton';
 export * from './Alcohol';
+export * from './Header';
