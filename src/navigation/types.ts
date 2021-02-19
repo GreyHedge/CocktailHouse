@@ -9,6 +9,7 @@ export enum EScreens {
   COCKTAIL_LIST_SCREEN = 'CocktailListScreen',
   INGREDIENT_LIST_SCREEN = 'IngredientListScreen',
   GLASS_LIST_SCREEN = 'GlassListScreen',
+  FAVORITES_LIST_SCREEN = 'FavoritesListScreen',
 }
 
 export type HomeStackParamList = {
@@ -18,6 +19,7 @@ export type HomeStackParamList = {
   [EScreens.COCKTAIL_LIST_SCREEN]: {title?: string; queryString: string; filter: EFilter};
   [EScreens.INGREDIENT_LIST_SCREEN]: undefined;
   [EScreens.GLASS_LIST_SCREEN]: undefined;
+  [EScreens.FAVORITES_LIST_SCREEN]: undefined;
 }
 
 export type HomeScreenProps = StackScreenProps<HomeStackParamList, EScreens.HOME_SCREEN>

@@ -1,10 +1,14 @@
 import React from 'react';
 import {StyleSheet} from 'react-native';
 import Icon from 'react-native-vector-icons/Fontisto';
-import {Box, Typography} from '@components';
+import {Box, ButtonsMenuBlock, RoundButton, Typography} from '@components';
 import {Colors, ESpacings} from '@constants';
 
-export const Header: React.FC = () => {
+interface IProps {
+  onListPress: () => void;
+}
+
+export const Header: React.FC<IProps> = ({onListPress}) => {
   return (
     <Box>
       <Icon
@@ -26,6 +30,14 @@ export const Header: React.FC = () => {
         color={Colors.dark}>
         House
       </Typography>
+      <ButtonsMenuBlock
+        style={styles.bookmarks}
+        color={Colors.pink}>
+        <RoundButton
+          onPress={onListPress}
+          icon='profile'
+        />
+      </ButtonsMenuBlock>
     </Box>
   )
 };
@@ -36,5 +48,8 @@ const styles = StyleSheet.create({
     top: 10,
     left: 100,
     opacity: 0.7,
+  },
+  bookmarks: {
+    top: 10,
   },
 });

@@ -1,13 +1,7 @@
-import React, {useCallback, useRef} from 'react';
-import {FlatList, ListRenderItemInfo, StyleSheet} from 'react-native';
+import React from 'react';
+import {ListRenderItemInfo} from 'react-native';
 import {IngredientListScreenProps} from '@navigation';
-import {
-  ScreenWrapper,
-  IngredientCard,
-  Typography,
-  Loader,
-  UpButton,
-} from '@components';
+import {IngredientCard, Loader, List} from '@components';
 import {allIngredients, Colors, ESpacings, roundButtonsWidth, EQueryKeys} from '@constants';
 import {IIngredient, IIngredientResponse, mapIngredients} from '@data';
 import {width} from '@helpers';
@@ -34,47 +28,17 @@ export const IngredientListScreen: React.FC<IngredientListScreenProps> = () => {
     mapIngredients,
     true,
   );
-  const listRef = useRef<FlatList>(null);
-
-  const handleUpPress = useCallback(() => {
-    listRef.current?.scrollToOffset({offset: 0, animated: true})
-  }, []);
 
   return (
-    <ScreenWrapper color={Colors.dark}>
+    <List
+      title='Ingredients'
+      items={ingredients}
+      numColumns={2}
+      renderItem={renderIngredient}
+      keyExtractor={keyExtractor}>
       {isLoading && (
         <Loader color={Colors.ice} />
       )}
-      {!!ingredients && (
-        <>
-          <Typography
-            title
-            color={Colors.ice}
-            marginLeft={ESpacings.s16}
-            marginVertical={ESpacings.s16}>
-            Ingredients
-          </Typography>
-          <FlatList
-            ref={listRef}
-            data={ingredients}
-            keyExtractor={keyExtractor}
-            renderItem={renderIngredient}
-            numColumns={2}
-            showsVerticalScrollIndicator={false}
-            contentContainerStyle={styles.container}
-          />
-        </>
-      )}
-      <UpButton onPress={handleUpPress} />
-    </ScreenWrapper>
-
+    </List>
   )
 };
-
-const styles = StyleSheet.create({
-  container: {
-    marginLeft: ESpacings.s16,
-    marginRight: ESpacings.s16 + roundButtonsWidth,
-    paddingBottom: ESpacings.s32,
-  },
-});

@@ -1,20 +1,13 @@
-import React, {useCallback, useRef} from 'react';
-import {FlatList, ListRenderItemInfo, StyleSheet} from 'react-native';
-import {
-  ScreenWrapper,
-  CocktailCard,
-  Typography,
-  Loader,
-  UpButton,
-  EmptyList,
-} from '@components';
+import React from 'react';
+import {ListRenderItemInfo} from 'react-native';
+import {CocktailCard, Loader, List} from '@components';
 import {ICocktail, ICocktailResponse, mapCocktailList} from '@data';
-import {roundButtonsWidth, Colors, ESpacings, EQueryKeys} from '@constants';
+import {Colors, ESpacings, EQueryKeys} from '@constants';
 import {CocktailListScreenProps} from '@navigation';
 import {getCocktails} from './helpers';
 import {useGetArrayData} from '@hooks';
 
-const minCocktailsNumber = 5;
+const keyExtractor = (item: ICocktail) => item.id;
 
 const handleRenderItem = (info: ListRenderItemInfo<ICocktail>) => {
   return (
@@ -35,48 +28,17 @@ export const CocktailListScreen: React.FC<CocktailListScreenProps> = ({
     mapCocktailList,
     true,
   );
-  const listRef = useRef<FlatList>(null);
-
-  const handleUpPress = useCallback(() => {
-    listRef.current?.scrollToOffset({offset: 0, animated: true})
-  }, []);
 
   return (
-    <ScreenWrapper color={Colors.dark}>
+    <List
+      title={title}
+      items={cocktailList}
+      renderItem={handleRenderItem}
+      keyExtractor={keyExtractor}>
       {isLoading && (
         <Loader color={Colors.ice} />
       )}
-      {!!cocktailList && (
-        <>
-          <Typography
-            title
-            color={Colors.ice}
-            marginVertical={ESpacings.s16}
-            marginLeft={ESpacings.s16}
-            marginRight={roundButtonsWidth + ESpacings.s16}>
-            {title}
-          </Typography>
-          <FlatList
-            ref={listRef}
-            data={cocktailList}
-            renderItem={handleRenderItem}
-            showsVerticalScrollIndicator={false}
-            contentContainerStyle={styles.container}
-            ListEmptyComponent={EmptyList}
-          />
-        </>
-      )}
-      {!!cocktailList && cocktailList.length > minCocktailsNumber && (
-        <UpButton onPress={handleUpPress} />
-      )}
-    </ScreenWrapper>
+    </List>
   )
 };
-
-const styles = StyleSheet.create({
-  container: {
-    paddingLeft: ESpacings.s16,
-    paddingRight: roundButtonsWidth + ESpacings.s16,
-  }
-});
 

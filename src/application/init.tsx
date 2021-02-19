@@ -12,6 +12,7 @@ const getMainContainer = (dependencies: IDependencies) => {
       favoriteStorage,
       queryClient,
     } = dependencies;
+
     return (
       <MainContext.Provider value={{apiClient, favoriteStorage}}>
         <QueryClientProvider client={queryClient}>

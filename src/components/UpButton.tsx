@@ -10,10 +10,10 @@ export const UpButton:React.FC<IProps> = ({onPress}) => {
   return (
     <ButtonsMenuBlock
       bottom
-      color={Colors.pink}>
+      color={Colors.reddish}>
       <RoundButton
         onPress={onPress}
-        icon={"arrowup"}
+        icon='arrowup'
       />
     </ButtonsMenuBlock>
   )

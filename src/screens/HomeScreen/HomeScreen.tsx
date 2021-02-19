@@ -46,9 +46,13 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({navigation}) => {
     })
   }, [navigation, textRef]);
 
+  const handleListPress = useCallback(() => {
+    navigation.navigate(EScreens.FAVORITES_LIST_SCREEN)
+  }, [navigation]);
+
   return (
     <ScreenWrapper color={Colors.blue} hideMenu>
-      <Header />
+      <Header onListPress={handleListPress}/>
       <SearchInput
         text={searchText}
         onTextChange={setSearchText}

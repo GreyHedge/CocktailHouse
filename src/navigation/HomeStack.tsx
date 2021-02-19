@@ -7,6 +7,7 @@ import {
   IngredientScreen,
   IngredientListScreen,
   GlassListScreen,
+  FavoriteListScreen,
 } from '@screens';
 import {EScreens} from './types';
 
@@ -38,6 +39,10 @@ export const HomeStack: React.FC = () => {
       <Stack.Screen
         name={EScreens.GLASS_LIST_SCREEN}
         component={GlassListScreen}
+      />
+      <Stack.Screen
+        name={EScreens.FAVORITES_LIST_SCREEN}
+        component={FavoriteListScreen}
       />
     </Stack.Navigator>
   )

@@ -1,5 +1,5 @@
 import React, {ReactNode} from 'react';
-import {StyleSheet} from 'react-native';
+import {StyleSheet, ViewStyle} from 'react-native';
 import {Box} from './Box';
 import {Colors, ESpacings, roundButtonsWidth} from '@constants';
 import {commonStyles} from '@helpers';
@@ -8,12 +8,14 @@ interface IProps {
   children: ReactNode;
   color?: string;
   bottom?: boolean;
+  style?: ViewStyle;
 }
 
 export const ButtonsMenuBlock: React.FC<IProps> = ({
   children,
   color = Colors.blue,
   bottom,
+  style = null,
 }) => {
   return (
     <Box
@@ -23,7 +25,7 @@ export const ButtonsMenuBlock: React.FC<IProps> = ({
       borderBottomLeftRadius={roundButtonsWidth / 2}
       borderTopLeftRadius={roundButtonsWidth / 2}
       alignItems="center"
-      style={[styles.container, bottom ? styles.bottom : styles.top, commonStyles.shadowLeft]}>
+      style={[styles.container, bottom ? styles.bottom : styles.top, commonStyles.shadowLeft, style]}>
       {children}
     </Box>
   )
