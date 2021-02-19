@@ -1,9 +1,12 @@
 import React, {useCallback} from 'react';
-import {useNavigation} from '@react-navigation/native';
+import {useNavigation, useRoute} from '@react-navigation/native';
 import {ButtonsMenuBlock, RoundButton} from '@components';
+import {CocktailScreenParams, EScreens} from '@navigation';
+import {LikeButton} from './LikeButton';
 
 export const Menu: React.FC = () => {
   const {goBack, popToTop} = useNavigation();
+  const {name, params} = useRoute<CocktailScreenParams>();
 
   const handleClosePress = useCallback(() => {
     goBack();
@@ -17,16 +20,15 @@ export const Menu: React.FC = () => {
     <ButtonsMenuBlock>
       <RoundButton
         onPress={handleClosePress}
-        icon={"close"}
+        icon="close"
       />
       <RoundButton
         onPress={handleHomePress}
-        icon={"home"}
+        icon="home"
       />
-      <RoundButton
-        onPress={()=>{console.log('like pressed')}}
-        icon={"hearto"}
-      />
+      {name === EScreens.COCKTAIL_SCREEN && (
+        <LikeButton id={params.id} />
+      )}
     </ButtonsMenuBlock>
   )
 };

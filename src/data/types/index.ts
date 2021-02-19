@@ -4,3 +4,5 @@ export * from './category';
 export * from './filters';
 export * from './glass';
 export * from './common';
+export * from './apiClient';
+export * from './favoritesStorage';

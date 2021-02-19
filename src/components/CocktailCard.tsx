@@ -3,12 +3,12 @@ import {Image, StyleSheet} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 import {Box} from './Box';
 import {Button} from './Button';
-import {RoundButton} from './RoundButton';
+import {LikeButton} from './LikeButton';
 import {Typography} from './Typography';
 import {roundButtonsWidth, Colors, ERounding, ESpacings, ImageSize} from '@constants';
 import {ICocktail} from '@data';
 import {commonStyles} from '@helpers';
-import {EScreens} from "@navigation";
+import {EScreens} from '@navigation';
 
 interface IProps {
   cocktail: ICocktail;
@@ -51,10 +51,7 @@ export const CocktailCard: React.FC<IProps> = ({
               style={styles.img}
               resizeMode="contain"
             />
-            <RoundButton
-              icon="hearto"
-              onPress={() => {console.log('heart1')}}
-            />
+            <LikeButton id={id} />
           </Box>
           <Typography
             h2

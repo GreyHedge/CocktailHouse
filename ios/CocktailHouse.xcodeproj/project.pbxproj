@@ -23,7 +23,6 @@
 		952518A6E6CE44E694AC259E /* Montserrat-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F92266475DED4B7AAB01997D /* Montserrat-Regular.ttf */; };
 		A8B2AF230D934D98A425B60B /* Montserrat-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 541CC2302969493580D2EA14 /* Montserrat-SemiBold.ttf */; };
 		CA3AA72CF2A57E4DE761FF65 /* libPods-CocktailHouse-tvOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DEE894DBE2BBADFA2C074C5 /* libPods-CocktailHouse-tvOSTests.a */; };
-		7BC168658C1A47088BB97D0D /* Merienda-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4B9E9441C54246A191AAAEBD /* Merienda-Regular.ttf */; };
 		EA12EE701CB5497184B0F0AF /* Merienda-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9B520BBA54A14B3381D1E05D /* Merienda-Bold.ttf */; };
 /* End PBXBuildFile section */
 
@@ -80,6 +79,7 @@
 		7DD369C5419240F0A4BA4AC7 /* Montserrat-Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Montserrat-Bold.ttf"; path = "../assets/fonts/Montserrat-Bold.ttf"; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = CocktailHouse/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8A2B47D030B5571EA352E4A7 /* Pods-CocktailHouse-tvOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CocktailHouse-tvOS.debug.xcconfig"; path = "Target Support Files/Pods-CocktailHouse-tvOS/Pods-CocktailHouse-tvOS.debug.xcconfig"; sourceTree = "<group>"; };
+		9B520BBA54A14B3381D1E05D /* Merienda-Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Merienda-Bold.ttf"; path = "../assets/fonts/Merienda-Bold.ttf"; sourceTree = "<group>"; };
 		AA8D0178C39A4303A515A3E7 /* Entypo.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Entypo.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Entypo.ttf"; sourceTree = "<group>"; };
 		B09A67AF83C6437BABCFA00C /* MaterialIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = MaterialIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/MaterialIcons.ttf"; sourceTree = "<group>"; };
 		BC8086673075F429E83D25F9 /* Pods-CocktailHouse.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CocktailHouse.release.xcconfig"; path = "Target Support Files/Pods-CocktailHouse/Pods-CocktailHouse.release.xcconfig"; sourceTree = "<group>"; };
@@ -91,8 +91,6 @@
 		ED2971642150620600B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS12.0.sdk/System/Library/Frameworks/JavaScriptCore.framework; sourceTree = DEVELOPER_DIR; };
 		F92266475DED4B7AAB01997D /* Montserrat-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Montserrat-Regular.ttf"; path = "../assets/fonts/Montserrat-Regular.ttf"; sourceTree = "<group>"; };
 		FA4A20899CD04417B488ACA6 /* Zocial.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Zocial.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Zocial.ttf"; sourceTree = "<group>"; };
-		4B9E9441C54246A191AAAEBD /* Merienda-Regular.ttf */ = {isa = PBXFileReference; name = "Merienda-Regular.ttf"; path = "../assets/fonts/Merienda-Regular.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		9B520BBA54A14B3381D1E05D /* Merienda-Bold.ttf */ = {isa = PBXFileReference; name = "Merienda-Bold.ttf"; path = "../assets/fonts/Merienda-Bold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -170,7 +168,6 @@
 				3582B7EC8FFB49D0869AFE11 /* Octicons.ttf */,
 				16993FB456EB4320A8ABF12E /* SimpleLineIcons.ttf */,
 				FA4A20899CD04417B488ACA6 /* Zocial.ttf */,
-				4B9E9441C54246A191AAAEBD /* Merienda-Regular.ttf */,
 				9B520BBA54A14B3381D1E05D /* Merienda-Bold.ttf */,
 			);
 			name = Resources;
@@ -399,7 +396,6 @@
 				5654DAA139384BC78F2CC9FA /* Montserrat-Bold.ttf in Resources */,
 				952518A6E6CE44E694AC259E /* Montserrat-Regular.ttf in Resources */,
 				A8B2AF230D934D98A425B60B /* Montserrat-SemiBold.ttf in Resources */,
-				7BC168658C1A47088BB97D0D /* Merienda-Regular.ttf in Resources */,
 				EA12EE701CB5497184B0F0AF /* Merienda-Bold.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

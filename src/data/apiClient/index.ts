@@ -1,15 +1,5 @@
 import axios, {AxiosInstance, AxiosResponse, CancelToken, CancelTokenSource} from 'axios';
-
-interface IAPIConfig {
-  baseURL: string;
-  timeout: number;
-}
-
-export interface IApiClient {
-  get: <T>(url: string, token?: CancelToken) => Promise<AxiosResponse<T>>;
-  post: <T>(url: string, params: Record<string, string>, token?: CancelToken) => Promise<AxiosResponse<T>>;
-  source: () => CancelTokenSource;
-}
+import {IApiClient, IAPIConfig} from '@data';
 
 export class ApiClient implements IApiClient {
   private client: AxiosInstance;
@@ -29,5 +19,5 @@ export class ApiClient implements IApiClient {
     return this.client.post(url, params, {cancelToken: token});
   };
 
-  source = () => axios.CancelToken.source();
+  source = (): CancelTokenSource => axios.CancelToken.source();
 }

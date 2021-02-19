@@ -1,5 +1,6 @@
 import {StackScreenProps} from '@react-navigation/stack';
 import {EFilter} from '@data';
+import {RouteProp} from "@react-navigation/native";
 
 export enum EScreens {
   HOME_SCREEN = 'HomeScreen',
@@ -25,3 +26,5 @@ export type IngredientScreenProps = StackScreenProps<HomeStackParamList, EScreen
 export type CocktailListScreenProps = StackScreenProps<HomeStackParamList, EScreens.COCKTAIL_LIST_SCREEN>
 export type GlassListScreenProps = StackScreenProps<HomeStackParamList, EScreens.GLASS_LIST_SCREEN>
 export type IngredientListScreenProps = StackScreenProps<HomeStackParamList, EScreens.INGREDIENT_LIST_SCREEN>
+
+export type CocktailScreenParams = RouteProp<HomeStackParamList, EScreens.COCKTAIL_SCREEN>
