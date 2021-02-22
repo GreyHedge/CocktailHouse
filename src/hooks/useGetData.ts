@@ -1,7 +1,7 @@
 import {useEffect} from 'react';
 import {useQuery,} from 'react-query';
+import {useApiClient} from './useApiClient';
 import {IMapFn, IResponse} from '@data';
-import {useApiClient} from './index';
 
 export const useGetData = <T,U>(
   queryKey: string,

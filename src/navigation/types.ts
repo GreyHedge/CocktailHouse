@@ -30,3 +30,4 @@ export type GlassListScreenProps = StackScreenProps<HomeStackParamList, EScreens
 export type IngredientListScreenProps = StackScreenProps<HomeStackParamList, EScreens.INGREDIENT_LIST_SCREEN>
 
 export type CocktailScreenParams = RouteProp<HomeStackParamList, EScreens.COCKTAIL_SCREEN>
+export type FavoriteListScreenParams = RouteProp<HomeStackParamList, EScreens.FAVORITES_LIST_SCREEN>

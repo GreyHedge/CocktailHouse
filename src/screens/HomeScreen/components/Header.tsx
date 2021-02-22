@@ -1,7 +1,7 @@
 import React from 'react';
 import {StyleSheet} from 'react-native';
 import Icon from 'react-native-vector-icons/Fontisto';
-import {Box, ButtonsMenuBlock, RoundButton, Typography} from '@components';
+import {Box, ButtonsMenuBlock, EIconType, RoundButton, Typography} from '@components';
 import {Colors, ESpacings} from '@constants';
 
 interface IProps {
@@ -35,7 +35,8 @@ export const Header: React.FC<IProps> = ({onListPress}) => {
         color={Colors.pink}>
         <RoundButton
           onPress={onListPress}
-          icon='profile'
+          iconType={EIconType.MATERIAL}
+          icon='table-heart'
         />
       </ButtonsMenuBlock>
     </Box>

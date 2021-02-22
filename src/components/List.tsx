@@ -69,8 +69,7 @@ export const List: React.FC<IProps> = ({
 
 const styles = StyleSheet.create({
   container: {
-    marginLeft: ESpacings.s16,
-    marginRight: ESpacings.s16 + roundButtonsWidth,
+    marginHorizontal: ESpacings.s16,
     paddingBottom: ESpacings.s32,
   },
 });

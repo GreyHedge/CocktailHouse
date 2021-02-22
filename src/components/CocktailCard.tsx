@@ -22,10 +22,10 @@ export const CocktailCard: React.FC<IProps> = ({
   marginRight = ESpacings.s0,
 }) => {
   const {id, name, img} = cocktail;
-  const {navigate} = useNavigation();
+  const {push} = useNavigation();
 
   const handlePress = useCallback(() => {
-    navigate(EScreens.COCKTAIL_SCREEN, {id})
+    push(EScreens.COCKTAIL_SCREEN, {id})
   }, [id]);
 
   return (

@@ -27,7 +27,7 @@ export const FavoriteListScreen: React.FC = () => {
 
   return (
     <List
-      title='Favorite cocktail'
+      title='Favorite cocktails'
       background={Colors.pink}
       items={favoriteCocktails}
       keyExtractor={keyExtractor}

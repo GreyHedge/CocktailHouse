@@ -1,12 +1,14 @@
 import React, {useCallback} from 'react';
 import {useNavigation, useRoute} from '@react-navigation/native';
-import {ButtonsMenuBlock, RoundButton} from '@components';
-import {CocktailScreenParams, EScreens} from '@navigation';
 import {LikeButton} from './LikeButton';
+import {ButtonsMenuBlock} from './ButtonsMenuBlock';
+import {RoundButton} from './RoundButton';
+import {EIconType} from './Icon';
+import {CocktailScreenParams, FavoriteListScreenParams, EScreens} from '@navigation';
 
 export const Menu: React.FC = () => {
   const {goBack, popToTop, push} = useNavigation();
-  const {name, params} = useRoute<CocktailScreenParams>();
+  const {name, params} = useRoute<CocktailScreenParams | FavoriteListScreenParams>();
 
   const handleBackPress = useCallback(() => {
     goBack();
@@ -30,13 +32,14 @@ export const Menu: React.FC = () => {
         onPress={handleHomePress}
         icon='home'
       />
-      {name === EScreens.COCKTAIL_SCREEN && (
+      {name === EScreens.COCKTAIL_SCREEN && params?.id && (
         <LikeButton id={params.id} />
       )}
       {name !== EScreens.FAVORITES_LIST_SCREEN && (
         <RoundButton
           onPress={handleListPress}
-          icon='profile'
+          iconType={EIconType.MATERIAL}
+          icon='table-heart'
         />
       )}
     </ButtonsMenuBlock>

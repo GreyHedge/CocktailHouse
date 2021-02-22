@@ -1,5 +1,6 @@
 import React from 'react';
-import {ButtonsMenuBlock, RoundButton} from '@components';
+import {ButtonsMenuBlock} from './ButtonsMenuBlock';
+import {RoundButton} from './RoundButton';
 import {Colors} from '@constants';
 
 interface IProps {
