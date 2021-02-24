@@ -10,7 +10,7 @@ interface IProps {
   hideMenu?: boolean;
 }
 
-export const ScreenWrapper: React.FC<IProps & StatusBarProps> = ({
+export const ScreenWrapper: React.FC<IProps & StatusBarProps> = React.memo(({
   children,
   color,
   hideMenu,
@@ -32,4 +32,4 @@ export const ScreenWrapper: React.FC<IProps & StatusBarProps> = ({
       <SafeAreaView style={{backgroundColor: color, opacity: 0.4}}/>
     </>
   )
-};
+});

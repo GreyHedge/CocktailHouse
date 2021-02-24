@@ -17,7 +17,7 @@ interface IProps {
   numColumns?: number;
 }
 
-export const List: React.FC<IProps> = ({
+export const List: React.FC<IProps> = React.memo(({
   children,
   items,
   renderItem,
@@ -38,7 +38,7 @@ export const List: React.FC<IProps> = ({
       {children}
       {!!items && (
         <>
-          {title && (
+          {!!title && (
             <Typography
               title
               color={background === Colors.dark ? Colors.ice : Colors.dark}
@@ -65,7 +65,7 @@ export const List: React.FC<IProps> = ({
       )}
     </ScreenWrapper>
   )
-};
+});
 
 const styles = StyleSheet.create({
   container: {

@@ -23,7 +23,7 @@ export const RoundButton: React.FC<IProps> =({
   icon,
   iconType = EIconType.ANT,
   size = roundButtonsWidth,
-  color = Colors.dark,
+  color,
   rippleColor = Colors.dark,
   style,
 }) => {

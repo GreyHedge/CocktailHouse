@@ -1,8 +1,8 @@
 import React from 'react';
 import {StyleSheet, ViewStyle} from 'react-native';
-import Icon from 'react-native-vector-icons/AntDesign';
 import {Button} from './Button';
 import {Box} from './Box';
+import {Icon} from './Icon';
 import {Typography} from './Typography';
 import {Colors, ERounding, ESpacings} from '@constants';
 import {IMargins} from './helpers';
@@ -20,7 +20,7 @@ interface IProps extends IMargins {
   backgroundColor?: string;
 }
 
-export const RectButton: React.FC<IProps> = ({
+export const RectButton: React.FC<IProps> = React.memo(({
   text,
   bigText,
   icon,
@@ -67,8 +67,6 @@ export const RectButton: React.FC<IProps> = ({
           {!!icon && (
             <Icon
               name={icon}
-              color={Colors.dark}
-              size={20}
               style={{marginLeft: ESpacings.s8}}
             />
           )}
@@ -76,7 +74,7 @@ export const RectButton: React.FC<IProps> = ({
       </Button>
     </Box>
   )
-};
+});
 
 const styles = StyleSheet.create({
   borderRadius: {

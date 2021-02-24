@@ -11,7 +11,7 @@ interface IProps {
   glass: string;
 }
 
-export const TagList: React.FC<IProps> = ({
+export const TagList: React.FC<IProps> = React.memo(({
   alcoholic,
   category,
   glass,
@@ -62,4 +62,4 @@ export const TagList: React.FC<IProps> = ({
       />
     </Box>
   )
-};
+});

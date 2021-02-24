@@ -6,7 +6,7 @@ import {Typography} from './Typography';
 import {Box} from './Box';
 import {EFilter, IIngredient} from '@data';
 import {Colors, ERounding, ESpacings, ImageSize} from '@constants';
-import {commonStyles} from '@helpers';
+import {commonStyles, getSmallIngredientImageUrl} from '@helpers';
 import {EScreens} from '@navigation';
 
 interface IProps {
@@ -15,7 +15,7 @@ interface IProps {
   width?: number;
 }
 
-export const IngredientCard: React.FC<IProps> = ({
+export const IngredientCard: React.FC<IProps> = React.memo(({
   ingredient,
   marginBottom = ESpacings.s0,
   width,
@@ -46,7 +46,7 @@ export const IngredientCard: React.FC<IProps> = ({
           style={[styles.button, {width}]}>
           <Box paddingVertical={ESpacings.s8}>
             <Image
-              source={{uri: `https://www.thecocktaildb.com/images/ingredients/${name}-Small.png`}}
+              source={{uri: getSmallIngredientImageUrl(name)}}
               style={styles.img}
               resizeMode="contain"
             />
@@ -62,7 +62,7 @@ export const IngredientCard: React.FC<IProps> = ({
       </Box>
     </Box>
   )
-};
+});
 
 const styles = StyleSheet.create({
   button: {

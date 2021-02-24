@@ -1,4 +1,5 @@
 export const baseUrl = 'https://www.thecocktaildb.com/api/json/v1/1/';
+export const ingredientsImagesUrl = 'https://www.thecocktaildb.com/images/ingredients/';
 export const cocktailDetail = 'lookup.php?i=';
 export const ingredientDetail = 'search.php?i=';
 export const randomCocktail = 'random.php';

@@ -15,7 +15,7 @@ const renderIngredient = (info: ListRenderItemInfo<IGlass>) => {
   )
 };
 
-export const GlassListScreen: React.FC<GlassListScreenProps> = () => {
+export const GlassListScreen: React.FC<GlassListScreenProps> = React.memo(() => {
   const {data: glassList, isLoading} = useGetArrayData<IGlass, IGlassResponse>(
     EQueryKeys.ALL_GLASSES,
     allGlasses,
@@ -36,4 +36,4 @@ export const GlassListScreen: React.FC<GlassListScreenProps> = () => {
       )}
     </List>
   );
-};
+});

@@ -1,5 +1,5 @@
 import React, {useCallback, useState, useRef} from 'react';
-import {ScrollView, StyleSheet} from 'react-native';
+import {ScrollView, StatusBar, StyleSheet} from 'react-native';
 import {ScreenWrapper} from '@components';
 import {
   Header,
@@ -28,7 +28,7 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({navigation}) => {
   }, [scrollViewRef.current]);
 
   const handleGlassPress = useCallback(() => {
-    navigation.navigate(EScreens.GLASS_LIST_SCREEN)
+    navigation.navigate(EScreens.GLASS_LIST_SCREEN);
   }, [navigation]);
 
   const handleMoreIngredientsPress = useCallback(() => {

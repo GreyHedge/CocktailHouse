@@ -4,13 +4,13 @@ import {Ingredient} from './Ingredient'
 import {Box, Typography} from '@components';
 import {Colors, ERounding, ESpacings} from '@constants';
 import {ICocktailIngredient} from '@data';
-import {commonStyles} from '@helpers';
+import {commonStyles, getSmallIngredientImageUrl} from '@helpers';
 
 interface IProps {
   ingredients: ICocktailIngredient[];
 }
 
-export const Ingredients: React.FC<IProps> = ({ingredients}) => {
+export const Ingredients: React.FC<IProps> = React.memo(({ingredients}) => {
   return (
     <Box
       alignItems="flex-end"
@@ -36,7 +36,7 @@ export const Ingredients: React.FC<IProps> = ({ingredients}) => {
             <Ingredient
               key={name}
               name={name}
-              img={{uri: `https://www.thecocktaildb.com/images/ingredients/${name}-Small.png`}}
+              img={{uri: getSmallIngredientImageUrl(name)}}
               dose={value}
               isLast={ingredients.length - 1 === index}
             />
@@ -45,7 +45,7 @@ export const Ingredients: React.FC<IProps> = ({ingredients}) => {
       </Box>
     </Box>
   )
-};
+});
 
 const styles = StyleSheet.create({
   container: {

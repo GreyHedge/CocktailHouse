@@ -1,18 +1,18 @@
 import React from 'react';
 import {StyleSheet} from 'react-native';
-import Icon from 'react-native-vector-icons/Fontisto';
-import {Box, ButtonsMenuBlock, EIconType, RoundButton, Typography} from '@components';
+import {Box, ButtonsMenuBlock, EIconType, Icon, RoundButton, Typography} from '@components';
 import {Colors, ESpacings} from '@constants';
 
 interface IProps {
   onListPress: () => void;
 }
 
-export const Header: React.FC<IProps> = ({onListPress}) => {
+export const Header: React.FC<IProps> = React.memo(({onListPress}) => {
   return (
     <Box>
       <Icon
         name='cocktail'
+        type={EIconType.FONTISTO}
         color={Colors.pink}
         size={80}
         style={styles.icon}
@@ -41,7 +41,7 @@ export const Header: React.FC<IProps> = ({onListPress}) => {
       </ButtonsMenuBlock>
     </Box>
   )
-};
+});
 
 const styles = StyleSheet.create({
   icon: {

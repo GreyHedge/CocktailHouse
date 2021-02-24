@@ -15,7 +15,7 @@ const getRandomCocktails = (setCocktails: (cocktails: ICocktail[]) => void) => {
     .catch((e) => console.log('error', e))
 };
 
-export const RandomCocktails: React.FC = () => {
+export const RandomCocktails: React.FC = React.memo(() => {
   const [cocktails, setCocktails] = useState<ICocktail[] | null>(null);
 
   useEffect(() => {
@@ -65,7 +65,7 @@ export const RandomCocktails: React.FC = () => {
       </ScrollView>
     </>
   )
-};
+});
 
 const styles = StyleSheet.create({
   container: {

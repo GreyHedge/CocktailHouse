@@ -1,8 +1,7 @@
 import React, {useCallback} from 'react';
 import {Image, ImageSourcePropType, StyleSheet} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
-import Icon from 'react-native-vector-icons/AntDesign';
-import {Box, Button, Typography} from '@components';
+import {Box, Button, Typography, Icon} from '@components';
 import {Colors, ESpacings} from '@constants';
 import {EScreens} from "@navigation";
 
@@ -13,7 +12,7 @@ export interface IIngredient {
   isLast?: boolean;
 }
 
-export const Ingredient: React.FC<IIngredient> = ({
+export const Ingredient: React.FC<IIngredient> = React.memo(({
   name,
   img,
   dose,
@@ -53,15 +52,11 @@ export const Ingredient: React.FC<IIngredient> = ({
             </Typography>
           )}
         </Box>
-        <Icon
-          name={"rightsquareo"}
-          color={Colors.dark}
-          size={20}
-        />
+        <Icon name="rightsquareo" />
       </Box>
     </Button>
   )
-};
+});
 
 const styles = StyleSheet.create({
   ingredientImg: {

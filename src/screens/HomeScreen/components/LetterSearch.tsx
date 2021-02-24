@@ -7,7 +7,7 @@ interface IProps {
   afterToggle: () => void;
 }
 
-export const LetterSearch: React.FC<IProps> = ({afterToggle}) => {
+export const LetterSearch: React.FC<IProps> = React.memo(({afterToggle}) => {
   return (
     <AccordionButton
       title="Find by letter"
@@ -17,4 +17,4 @@ export const LetterSearch: React.FC<IProps> = ({afterToggle}) => {
       })}
     </AccordionButton>
   )
-};
+});

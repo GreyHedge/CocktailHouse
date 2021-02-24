@@ -1,5 +1,6 @@
-import React, {useCallback, useRef, useState} from 'react';
+import React, {useCallback, useEffect, useRef, useState} from 'react';
 import {StyleSheet} from 'react-native';
+import {useIsFocused} from '@react-navigation/native';
 import Animated, {
   useAnimatedStyle,
   useSharedValue,
@@ -11,7 +12,7 @@ import {Box} from './Box';
 import {Icon} from './Icon';
 import {Button} from './Button';
 import {useFavoriteStorage} from '@hooks';
-import {Colors, ESpacings, roundButtonsWidth} from '@constants';
+import {ESpacings, roundButtonsWidth} from '@constants';
 
 interface IProps {
   id: string;
@@ -33,6 +34,7 @@ const springConfig = {
 export const LikeButton: React.FC<IProps> = ({
   id,
 }) => {
+  const isFocused = useIsFocused();
   const favoriteStorage = useFavoriteStorage();
   const [isFavorite, setIsFavorite] = useState<boolean>(favoriteStorage.hasItem(id));
   const favoriteRef = useRef<boolean>(isFavorite);
@@ -79,6 +81,13 @@ export const LikeButton: React.FC<IProps> = ({
     }
   }, []);
 
+  useEffect(() => {
+    if (isFocused && isFavorite !== favoriteStorage.hasItem(id)) {
+      setIsFavorite(favoriteStorage.hasItem(id));
+      favoriteRef.current = favoriteStorage.hasItem(id);
+    }
+  }, [isFocused]);
+
   return (
     <Button
       radius={roundButtonsWidth / 2}
@@ -90,15 +99,13 @@ export const LikeButton: React.FC<IProps> = ({
         alignItems="center"
         justifyContent="center">
         <Icon
-          name='hearto'
-          color={Colors.dark}
+          name="hearto"
           size={roundButtonsWidth / 2 - ESpacings.s4}
         />
       </Box>
       <Animated.View style={[styles.heartFull, animatedStyle]}>
         <Icon
-          name='heart'
-          color={Colors.dark}
+          name="heart"
           size={roundButtonsWidth / 2 - ESpacings.s4}
         />
       </Animated.View>

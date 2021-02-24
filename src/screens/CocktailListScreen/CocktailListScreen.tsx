@@ -18,7 +18,7 @@ const handleRenderItem = (info: ListRenderItemInfo<ICocktail>) => {
   )
 };
 
-export const CocktailListScreen: React.FC<CocktailListScreenProps> = ({
+export const CocktailListScreen: React.FC<CocktailListScreenProps> = React.memo(({
   route,
 }) => {
   const {params: {title = '', queryString, filter}} = route;
@@ -40,5 +40,5 @@ export const CocktailListScreen: React.FC<CocktailListScreenProps> = ({
       )}
     </List>
   )
-};
+});
 

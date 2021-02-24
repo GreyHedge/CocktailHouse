@@ -2,14 +2,14 @@ import React from 'react';
 import {Image, StyleSheet} from 'react-native';
 import {Box, Typography} from '@components';
 import {Colors, ERounding, ESpacings, ingredientImgSize} from '@constants';
-import {commonStyles, width} from '@helpers';
+import {commonStyles, width, getMediumIngredientImageUrl} from '@helpers';
 
 interface IProps {
   name: string;
   description: string | null;
 }
 
-export const Description: React.FC<IProps> = ({
+export const Description: React.FC<IProps> = React.memo(({
   name,
   description,
 }) =>  {
@@ -28,7 +28,7 @@ export const Description: React.FC<IProps> = ({
       borderTopLeftRadius={ERounding.r24}
       borderBottomLeftRadius={ERounding.r24}>
       <Image
-        source={{uri: `https://www.thecocktaildb.com/images/ingredients/${name}-Medium.png`}}
+        source={{uri: getMediumIngredientImageUrl(name)}}
         style={styles.img}
         resizeMode="contain"
       />
@@ -49,7 +49,7 @@ export const Description: React.FC<IProps> = ({
     </Box>
   </Box>
   )
-};
+});
 
 const styles = StyleSheet.create({
   shadow: {

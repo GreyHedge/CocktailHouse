@@ -9,7 +9,7 @@ interface IProps {
   glass: string;
 }
 
-export const Glass: React.FC<IProps> = ({
+export const Glass: React.FC<IProps> = React.memo(({
   glass,
 }) => {
   const {navigate} = useNavigation();
@@ -38,4 +38,4 @@ export const Glass: React.FC<IProps> = ({
       marginRight={ESpacings.s8}
     />
   )
-};
+});

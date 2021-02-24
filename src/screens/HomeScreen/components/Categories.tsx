@@ -6,7 +6,7 @@ import {allCategories, Colors, ESpacings, EQueryKeys} from '@constants';
 import {ICategory, ICategoryResponse, mapCategoryList} from '@data';
 import {useGetArrayData} from '@hooks';
 
-export const Categories: React.FC = () => {
+export const Categories: React.FC = React.memo(() => {
   const {data: categories} = useGetArrayData<ICategory, ICategoryResponse>(
     EQueryKeys.ALL_CATEGORIES,
     allCategories,
@@ -38,6 +38,10 @@ export const Categories: React.FC = () => {
         marginRight={ESpacings.s8}
         style={styles.container}>
         {categories.map(({category}) => {
+          if(!category) {
+            return null;
+          }
+
           return (
             <Category
               key={category}
@@ -48,7 +52,7 @@ export const Categories: React.FC = () => {
       </Box>
     </Box>
   )
-};
+});
 
 const styles = StyleSheet.create({
   container: {

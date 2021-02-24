@@ -1,51 +1,32 @@
 import React from 'react';
 import {StyleSheet} from 'react-native';
-import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
-import {Box} from '@components';
+import {Box, EIconType, Icon} from '@components';
 import {Colors, ESpacings} from '@constants';
 
+const icons = ['glass-cocktail', 'glass-flute', 'glass-pint-outline', 'glass-tulip', 'glass-wine', 'glass-stange'];
 const iconSize = ESpacings.s24;
 
-export const Header: React.FC = () => {
+export const Header: React.FC = React.memo(() => {
   return (
     <Box
       row
       justifyContent="space-around"
       marginVertical={ESpacings.s16}
       style={styles.container}>
-      <Icon
-        name="glass-cocktail"
-        color={Colors.pink}
-        size={iconSize}
-      />
-      <Icon
-        name="glass-flute"
-        color={Colors.pink}
-        size={iconSize}
-      />
-      <Icon
-        name="glass-pint-outline"
-        color={Colors.pink}
-        size={iconSize}
-      />
-      <Icon
-        name="glass-tulip"
-        color={Colors.pink}
-        size={iconSize}
-      />
-      <Icon
-        name="glass-wine"
-        color={Colors.pink}
-        size={iconSize}
-      />
-      <Icon
-        name="glass-stange"
-        color={Colors.pink}
-        size={iconSize}
-      />
+      {icons.map((icon: string) => {
+        return (
+          <Icon
+            key={icon}
+            name={icon}
+            type={EIconType.MATERIAL}
+            color={Colors.pink}
+            size={iconSize}
+          />
+        )
+      })}
     </Box>
   )
-};
+});
 
 const styles = StyleSheet.create({
   container: {

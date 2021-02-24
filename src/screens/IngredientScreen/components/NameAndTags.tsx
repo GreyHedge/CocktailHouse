@@ -1,6 +1,5 @@
 import React from 'react';
-import Icon from 'react-native-vector-icons/AntDesign';
-import {Typography, Box} from '@components';
+import {Typography, Box, Icon} from '@components';
 import {Colors, ESpacings} from '@constants';
 
 interface IProps {
@@ -10,7 +9,7 @@ interface IProps {
   abv: string | null;
 }
 
-export const NameAndTags: React.FC<IProps> = ({
+export const NameAndTags: React.FC<IProps> = React.memo(({
   name,
   type,
   isAlcohol,
@@ -30,11 +29,7 @@ export const NameAndTags: React.FC<IProps> = ({
         marginVertical={ESpacings.s32}
         marginLeft={ESpacings.s16}>
         {(!!type || isAlcohol || !!abv) && (
-          <Icon
-            name={"tagso"}
-            color={Colors.dark}
-            size={20}
-          />
+          <Icon name="tagso" />
         )}
         <Box marginLeft={ESpacings.s16}>
           {!!type && (
@@ -62,4 +57,4 @@ export const NameAndTags: React.FC<IProps> = ({
       </Box>
     </Box>
   )
-};
+});

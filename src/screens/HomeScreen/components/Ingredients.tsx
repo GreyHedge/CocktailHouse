@@ -11,7 +11,7 @@ interface IProps {
   onMorePress: () => void;
 }
 
-export const Ingredients: React.FC<IProps> = ({onMorePress}) => {
+export const Ingredients: React.FC<IProps> = React.memo(({onMorePress}) => {
   const {data: ingredients} = useGetArrayData<IIngredient, IIngredientResponse>(
     EQueryKeys.ALL_INGREDIENTS,
     allIngredients,
@@ -57,7 +57,7 @@ export const Ingredients: React.FC<IProps> = ({onMorePress}) => {
       </ScrollView>
     </>
   )
-};
+});
 
 const styles = StyleSheet.create({
   container: {

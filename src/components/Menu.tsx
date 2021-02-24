@@ -6,7 +6,7 @@ import {RoundButton} from './RoundButton';
 import {EIconType} from './Icon';
 import {CocktailScreenParams, FavoriteListScreenParams, EScreens} from '@navigation';
 
-export const Menu: React.FC = () => {
+export const Menu: React.FC = React.memo(() => {
   const {goBack, popToTop, push} = useNavigation();
   const {name, params} = useRoute<CocktailScreenParams | FavoriteListScreenParams>();
 
@@ -44,4 +44,4 @@ export const Menu: React.FC = () => {
       )}
     </ButtonsMenuBlock>
   )
-};
+});

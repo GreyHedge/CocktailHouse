@@ -1,7 +1,6 @@
 import React from 'react';
 import {StyleSheet} from 'react-native';
-import Icon from 'react-native-vector-icons/AntDesign';
-import {Box, Typography, Button} from '@components';
+import {Box, Typography, Button, Icon} from '@components';
 import {Colors, ESpacings} from '@constants';
 
 interface IProps {
@@ -11,7 +10,7 @@ interface IProps {
   onPress: ()  => void;
 }
 
-export const Tag: React.FC<IProps> = ({
+export const Tag: React.FC<IProps> = React.memo(({
   name,
   value,
   isLast = false,
@@ -26,11 +25,7 @@ export const Tag: React.FC<IProps> = ({
         paddingVertical={ESpacings.s8}
         paddingRight={ESpacings.s16}
         style={isLast ? null : styles.border}>
-        <Icon
-          name={"tago"}
-          color={Colors.dark}
-          size={20}
-        />
+        <Icon name="tago" />
         <Box flex={1} paddingHorizontal={ESpacings.s16}>
           <Typography
             h3
@@ -43,15 +38,11 @@ export const Tag: React.FC<IProps> = ({
             {value}
           </Typography>
         </Box>
-        <Icon
-          name={"rightsquareo"}
-          color={Colors.dark}
-          size={20}
-        />
+        <Icon name="rightsquareo" />
       </Box>
     </Button>
   )
-};
+});
 
 const styles = StyleSheet.create({
   border: {

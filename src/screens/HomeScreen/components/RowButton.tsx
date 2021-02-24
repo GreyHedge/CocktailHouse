@@ -1,7 +1,6 @@
 import React from 'react';
 import {StyleSheet} from 'react-native';
-import Icon from 'react-native-vector-icons/AntDesign';
-import {Box, Button, Typography} from '@components';
+import {Box, Button, Typography, Icon} from '@components';
 import {Colors, ESpacings} from '@constants';
 
 interface IProps {
@@ -11,7 +10,7 @@ interface IProps {
   border?: boolean;
 }
 
-export const RowButton: React.FC<IProps> =({
+export const RowButton: React.FC<IProps> = React.memo(({
   name,
   onPress,
   icon = 'rightsquareo',
@@ -29,15 +28,11 @@ export const RowButton: React.FC<IProps> =({
         <Typography headLine>
           {name}
         </Typography>
-        <Icon
-          name={icon}
-          color={Colors.dark}
-          size={20}
-        />
+        <Icon name={icon} />
       </Box>
     </Button>
   )
-};
+});
 
 const styles = StyleSheet.create({
   container: {

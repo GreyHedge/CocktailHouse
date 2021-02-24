@@ -10,7 +10,7 @@ interface IProps {
   onSubmit: () => void;
 }
 
-export const SearchInput: React.FC<IProps> = ({
+export const SearchInput: React.FC<IProps> = React.memo(({
   text,
   onTextChange,
   onSubmit,
@@ -32,7 +32,7 @@ export const SearchInput: React.FC<IProps> = ({
       <RoundButton onPress={onSubmit} icon="search1" />
     </Box>
   )
-};
+});
 
 const styles = StyleSheet.create({
   container: {

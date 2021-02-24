@@ -7,7 +7,7 @@ import {Colors, ingredientDetail, EQueryKeys} from '@constants';
 import {IngredientScreenProps} from '@navigation';
 import {useGetData} from '@hooks';
 
-export const IngredientScreen: React.FC<IngredientScreenProps> = ({
+export const IngredientScreen: React.FC<IngredientScreenProps> = React.memo(({
   route,
 }) => {
   const {params: {name: ingredientName}} = route;
@@ -39,4 +39,4 @@ export const IngredientScreen: React.FC<IngredientScreenProps> = ({
       )}
     </ScreenWrapper>
   )
-};
+});

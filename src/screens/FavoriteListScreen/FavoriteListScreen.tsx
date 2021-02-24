@@ -22,7 +22,7 @@ const handleRenderItem = (info: ListRenderItemInfo<{isLoading: boolean; data: IC
   )
 };
 
-export const FavoriteListScreen: React.FC = () => {
+export const FavoriteListScreen: React.FC = React.memo(() => {
   const favoriteCocktails = useGetFavoritesCocktails();
 
   return (
@@ -34,4 +34,4 @@ export const FavoriteListScreen: React.FC = () => {
       renderItem={handleRenderItem}
     />
   )
-};
+});

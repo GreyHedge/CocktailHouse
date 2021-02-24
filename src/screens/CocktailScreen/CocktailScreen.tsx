@@ -7,7 +7,7 @@ import {cocktailDetail, Colors, EQueryKeys} from '@constants';
 import {CocktailScreenProps} from '@navigation';
 import {useGetData} from '@hooks';
 
-export const CocktailScreen: React.FC<CocktailScreenProps> = ({
+export const CocktailScreen: React.FC<CocktailScreenProps> = React.memo(({
   route,
 }) => {
   const {params: {id}} = route;
@@ -42,5 +42,5 @@ export const CocktailScreen: React.FC<CocktailScreenProps> = ({
       )}
     </ScreenWrapper>
   )
-};
+});
 

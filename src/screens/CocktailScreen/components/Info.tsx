@@ -15,7 +15,7 @@ interface IProps {
   glass: string;
 }
 
-export const Info: React.FC<IProps> = ({
+export const Info: React.FC<IProps> = React.memo(({
   name,
   iba,
   alcoholic,
@@ -69,7 +69,7 @@ export const Info: React.FC<IProps> = ({
       </Box>
     </Box>
   )
-};
+});
 
 const styles = StyleSheet.create({
   container: {

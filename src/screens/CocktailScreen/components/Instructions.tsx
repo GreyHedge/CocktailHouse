@@ -9,7 +9,7 @@ interface IProps {
   glass: string;
 }
 
-export const Instructions: React.FC<IProps> = ({instructions, glass}) => {
+export const Instructions: React.FC<IProps> = React.memo(({instructions, glass}) => {
   return (
     <Box
       backgroundColor={Colors.dark}
@@ -47,7 +47,7 @@ export const Instructions: React.FC<IProps> = ({instructions, glass}) => {
       </Typography>
     </Box>
   )
-};
+});
 
 const styles = StyleSheet.create({
   shadow: {

@@ -16,7 +16,7 @@ interface IProps {
   marginRight?: ESpacings | number;
 }
 
-export const CocktailCard: React.FC<IProps> = ({
+export const CocktailCard: React.FC<IProps> = React.memo(({
   cocktail,
   marginBottom = ESpacings.s0,
   marginRight = ESpacings.s0,
@@ -65,7 +65,7 @@ export const CocktailCard: React.FC<IProps> = ({
       </Box>
     </Box>
   )
-};
+});
 
 const styles = StyleSheet.create({
   container: {
