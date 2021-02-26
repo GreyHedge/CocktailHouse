@@ -21,7 +21,7 @@ const renderIngredient = (info: ListRenderItemInfo<IIngredient>) => {
 
 const keyExtractor = (item: IIngredient) => item.name;
 
-export const IngredientListScreen: React.FC<IngredientListScreenProps> = () => {
+export const IngredientListScreen: React.FC<IngredientListScreenProps> = React.memo(() => {
   const {data: ingredients, isLoading} = useGetArrayData<IIngredient, IIngredientResponse>(
     EQueryKeys.ALL_INGREDIENTS,
     allIngredients,
@@ -31,7 +31,7 @@ export const IngredientListScreen: React.FC<IngredientListScreenProps> = () => {
 
   return (
     <List
-      title='Ingredients'
+      title="Ingredients"
       items={ingredients}
       numColumns={2}
       renderItem={renderIngredient}
@@ -41,4 +41,4 @@ export const IngredientListScreen: React.FC<IngredientListScreenProps> = () => {
       )}
     </List>
   )
-};
+});
